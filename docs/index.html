@@ -50,6 +50,11 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
           Visão Geral
         </button>
+        <button type="button" class="nav-btn" data-tab="liberar_pro" id="nav-btn-liberar-pro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          Liberar Acesso PRO
+          <span id="badge-pedidos-pro-nav" class="badge badge-warn" style="margin-left:auto; font-size:0.7rem;" hidden>0</span>
+        </button>
         <button type="button" class="nav-btn" data-tab="assistente">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L19.5 4.5"/><circle cx="12" cy="12" r="3"/></svg>
           Assistente (Resolver Problemas)
@@ -135,6 +140,7 @@
           <kbd class="kbd-hint">Ctrl+K</kbd>
         </div>
         <div class="quick-pills" aria-label="Atalhos rápidos">
+          <button type="button" class="quick-pill" data-atalho-aba="liberar_pro">🔑 Liberar Acesso PRO</button>
           <button type="button" class="quick-pill" data-criar-dossie="true">💾 Backup Completo do PC</button>
           <button type="button" class="quick-pill" data-enviar-gdrive="true">☁️ Subir p/ Google Drive</button>
           <button type="button" class="quick-pill" data-perfil="perfil_windows_liso">🚀 Deixar Win 10/11 Bem Liso</button>
@@ -166,6 +172,8 @@
       <div id="aviso-admin-banner" class="notice notice-warn" hidden>
         <span>Modo Leitura ativo: ações que gravam no sistema pedem para abrir pelo arquivo <strong>Iniciar_Windows_Boost_Pro.bat</strong> como Administrador.</span>
       </div>
+
+      <div id="aviso-liberacao-banner" hidden></div>
 
       <section id="conteudo-principal" aria-live="polite"></section>
 

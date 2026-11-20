@@ -1,4 +1,4 @@
-const CACHE_NOME = "windows-boost-pro-v4";
+const CACHE_NOME = "windows-boost-pro-v5";
 const ATIVOS_BASE = [
   "./",
   "./index.html",

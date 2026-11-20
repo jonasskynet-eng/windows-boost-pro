@@ -24,8 +24,14 @@ const estado = {
     edicao: "pro",
     nomeEdicao: "Windows Boost PRO (Completa)",
     licencaProAtiva: true,
-    abasLite: ["visao_geral", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
+    abasLite: ["visao_geral", "liberar_pro", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
   },
+  pedidosProInfo: {
+    pedidos: [],
+    pendentes: 0,
+    ultimoAvisoCliente: null,
+  },
+  ultimoLinkZapPedido: "",
   ultimaChaveGerada: "",
   buscaGlobal: "",
   isoTools: null,
@@ -42,6 +48,10 @@ const INFO_ABAS = {
   visao_geral: {
     titulo: "Visão Geral",
     subtitulo: "Diagnóstico ao vivo do seu hardware, backup e perfis recomendados em 1 clique.",
+  },
+  liberar_pro: {
+    titulo: "Liberar Acesso PRO — Pedidos, Aprovação & Aviso ao Cliente",
+    subtitulo: "Clientes na versão LITE pedem liberação em 1 clique; o técnico Jonas aprova, libera todas as abas e envia o aviso na tela do cliente.",
   },
   assistente: {
     titulo: "Assistente Técnico Inteligente — O Que Está Acontecendo?",
@@ -458,8 +468,22 @@ async function apiGet(url) {
       edicao: ed,
       licencaProAtiva: ed === "pro" || Boolean(salvo?.licencaProAtiva),
       nomeEdicao: ed === "lite" ? "Windows Boost LITE (Essencial)" : "Windows Boost PRO (Completa)",
-      abasLite: ["visao_geral", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
+      abasLite: ["visao_geral", "liberar_pro", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
     };
+  }
+  if (url === "/api/edicao/pedidos") {
+    const pedidos = (() => {
+      try {
+        const arr = JSON.parse(localStorage.getItem("wbp_pedidos_pro_web") || "[]");
+        return Array.isArray(arr) ? arr : [];
+      } catch {
+        return [];
+      }
+    })();
+    const pendentes = pedidos.filter((p) => p.status === "pendente").length;
+    const ultimoAvisoCliente =
+      pedidos.find((p) => !p.avisoLido && (p.status === "aprovado" || p.status === "recusado")) || null;
+    return { ok: true, pedidos, pendentes, ultimoAvisoCliente };
   }
   return {};
 }
@@ -752,16 +776,151 @@ async function apiPost(url, corpo) {
       edicao: ed,
       licencaProAtiva: ed === "pro",
       nomeEdicao: ed === "lite" ? "Windows Boost LITE (Essencial)" : "Windows Boost PRO (Completa)",
-      abasLite: ["visao_geral", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
+      abasLite: ["visao_geral", "liberar_pro", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
       mensagem:
         ed === "lite"
           ? "Alternado para Versão LITE (Mais Baixa / Segura para Clientes)."
-          : "Versão PRO (Demonstração Completa) ativada com todas as 13 abas!",
+          : "Versão PRO (Demonstração Completa) ativada com todas as 14 abas!",
     };
     try {
       localStorage.setItem("wbp_edicao_web", JSON.stringify(obj));
     } catch {}
     return { status: 200, ok: true, data: obj };
+  }
+  if (url === "/api/edicao/pedidos/solicitar") {
+    const pedidos = (() => {
+      try {
+        const arr = JSON.parse(localStorage.getItem("wbp_pedidos_pro_web") || "[]");
+        return Array.isArray(arr) ? arr : [];
+      } catch {
+        return [];
+      }
+    })();
+    const codigo = `PED-${Math.floor(1000 + Math.random() * 9000)}`;
+    const nomeCliente = String(corpo?.nomeCliente || "").trim() || "Cliente Windows Boost";
+    const whatsappCliente = String(corpo?.whatsappCliente || "").trim();
+    const observacao = String(corpo?.observacao || "").trim();
+    const hostname = String(corpo?.hostname || estado.hardware?.hostname || "Aparelho Web").trim();
+    const novo = {
+      id: codigo,
+      nomeCliente,
+      whatsappCliente,
+      observacao,
+      hostname,
+      status: "pendente",
+      criadoEm: new Date().toLocaleString("pt-BR"),
+      decididoEm: "",
+      chaveGerada: "",
+      avisoParaCliente: "",
+      avisoLido: false,
+    };
+    pedidos.unshift(novo);
+    try {
+      localStorage.setItem("wbp_pedidos_pro_web", JSON.stringify(pedidos.slice(0, 30)));
+    } catch {}
+    const textoZap = `Olá Jonas! Sou ${nomeCliente} e estou usando o Windows Boost LITE.\nQuero pedir a liberação do Acesso PRO!\n• Pedido: ${codigo}\n• Aparelho: ${hostname}${observacao ? `\n• Mensagem: ${observacao}` : ""}`;
+    return {
+      status: 200,
+      ok: true,
+      data: {
+        ok: true,
+        pedido: novo,
+        pedidos,
+        pendentes: pedidos.filter((p) => p.status === "pendente").length,
+        ultimoAvisoCliente: pedidos.find((p) => !p.avisoLido && (p.status === "aprovado" || p.status === "recusado")) || null,
+        linkWhatsappJonas: `https://wa.me/5511966707293?text=${encodeURIComponent(textoZap)}`,
+        mensagem: `Pedido ${codigo} enviado! O técnico Jonas recebeu o aviso e pode aprovar na aba Liberar Acesso PRO.`,
+      },
+    };
+  }
+  if (url === "/api/edicao/pedidos/decidir") {
+    const pedidos = (() => {
+      try {
+        const arr = JSON.parse(localStorage.getItem("wbp_pedidos_pro_web") || "[]");
+        return Array.isArray(arr) ? arr : [];
+      } catch {
+        return [];
+      }
+    })();
+    const id = String(corpo?.id || "").trim();
+    const acao = String(corpo?.acao || "").trim().toLowerCase();
+    const avisoPersonalizado = String(corpo?.avisoPersonalizado || "").trim();
+    if (acao === "limpar_aviso") {
+      pedidos.forEach((p) => {
+        if (!id || p.id === id) p.avisoLido = true;
+      });
+      try {
+        localStorage.setItem("wbp_pedidos_pro_web", JSON.stringify(pedidos));
+      } catch {}
+      return {
+        status: 200,
+        ok: true,
+        data: {
+          ok: true,
+          pedidos,
+          pendentes: pedidos.filter((p) => p.status === "pendente").length,
+          ultimoAvisoCliente: null,
+          mensagem: "Aviso confirmado como lido.",
+        },
+      };
+    }
+    const alvo = pedidos.find((p) => p.id === id);
+    if (!alvo) return { status: 400, ok: false, data: { ok: false, mensagem: "Pedido não encontrado." } };
+    let edicaoInfo = null;
+    let linkWhatsappCliente = "";
+    if (acao === "aprovar") {
+      const chave = `DEMO-PRO-${Math.floor(1000 + Math.random() * 9000)}`;
+      alvo.status = "aprovado";
+      alvo.decididoEm = new Date().toLocaleString("pt-BR");
+      alvo.chaveGerada = chave;
+      alvo.avisoParaCliente =
+        avisoPersonalizado ||
+        `Parabéns, ${alvo.nomeCliente}! Seu Acesso PRO foi liberado por Jonas Mendonça. Todas as abas já estão abertas!`;
+      alvo.avisoLido = false;
+      edicaoInfo = {
+        ok: true,
+        edicao: "pro",
+        licencaProAtiva: true,
+        nomeEdicao: "Windows Boost PRO (Completa)",
+        abasLite: ["visao_geral", "liberar_pro", "assistente", "otimizar_windows", "otimizar_jogos", "rede_ping", "memoria_ram"],
+      };
+      try {
+        localStorage.setItem("wbp_edicao_web", JSON.stringify(edicaoInfo));
+      } catch {}
+      const fone = String(alvo.whatsappCliente || "").replace(/\D/g, "");
+      const txt = `Olá ${alvo.nomeCliente}! Seu acesso ao Windows Boost PRO foi LIBERADO! 🎉\nChave: ${chave}\n${alvo.avisoParaCliente}`;
+      linkWhatsappCliente =
+        fone.length >= 10
+          ? `https://wa.me/${fone.startsWith("55") ? fone : `55${fone}`}?text=${encodeURIComponent(txt)}`
+          : `https://wa.me/?text=${encodeURIComponent(txt)}`;
+    } else {
+      alvo.status = "recusado";
+      alvo.decididoEm = new Date().toLocaleString("pt-BR");
+      alvo.avisoParaCliente =
+        avisoPersonalizado ||
+        `Olá ${alvo.nomeCliente}, aguardando confirmação de pagamento no WhatsApp (11) 96670-7293 para liberar o PRO.`;
+      alvo.avisoLido = false;
+    }
+    try {
+      localStorage.setItem("wbp_pedidos_pro_web", JSON.stringify(pedidos));
+    } catch {}
+    return {
+      status: 200,
+      ok: true,
+      data: {
+        ok: true,
+        pedido: alvo,
+        edicaoInfo,
+        linkWhatsappCliente,
+        pedidos,
+        pendentes: pedidos.filter((p) => p.status === "pendente").length,
+        ultimoAvisoCliente: pedidos.find((p) => !p.avisoLido && (p.status === "aprovado" || p.status === "recusado")) || null,
+        mensagem:
+          acao === "aprovar"
+            ? `Acesso PRO liberado para ${alvo.nomeCliente} e aviso exibido na tela do cliente!`
+            : `Aviso de pendência enviado na tela para ${alvo.nomeCliente}.`,
+      },
+    };
   }
   if (url === "/api/edicao/gerar-chave") {
     const num = String(Math.floor(1000 + Math.random() * 9000));
@@ -789,7 +948,7 @@ async function apiPost(url, corpo) {
 }
 
 async function carregarBasico() {
-  const [hw, cat, ass, iso, tec, dos, recPc, edInfo] = await Promise.all([
+  const [hw, cat, ass, iso, tec, dos, recPc, edInfo, pedInfo] = await Promise.all([
     apiGet("/api/hardware"),
     apiGet("/api/catalogo"),
     apiGet("/api/assistente"),
@@ -798,6 +957,7 @@ async function carregarBasico() {
     apiGet("/api/dossie/listar"),
     apiGet("/api/dossie/reconhecer-pc"),
     apiGet("/api/edicao"),
+    apiGet("/api/edicao/pedidos"),
   ]);
   estado.hardware = hw;
   estado.catalogo = cat;
@@ -808,6 +968,7 @@ async function carregarBasico() {
   estado.dossies = dos?.dossies || [];
   estado.pcReconhecido = recPc?.encontrado ? recPc : null;
   if (edInfo?.edicao) estado.edicaoInfo = edInfo;
+  if (pedInfo?.ok) estado.pedidosProInfo = pedInfo;
 
   // Respeita o parâmetro ?edicao=lite ou ?edicao=pro na URL (ideal para link direto ou .bat da Versão LITE!)
   const paramEd = new URLSearchParams(window.location.search).get("edicao");
@@ -878,6 +1039,82 @@ function atualizarBarraLateral() {
       bdgEd.textContent = "Completa";
     }
   }
+
+  atualizarAvisosLiberacaoPro();
+}
+
+function atualizarAvisosLiberacaoPro() {
+  const pedInfo = estado.pedidosProInfo || { pedidos: [], pendentes: 0, ultimoAvisoCliente: null };
+  const pendentes = Number(pedInfo.pendentes || 0);
+  const badgeNav = document.getElementById("badge-pedidos-pro-nav");
+  if (badgeNav) {
+    if (pendentes > 0) {
+      badgeNav.hidden = false;
+      badgeNav.textContent = `🔔 ${pendentes}`;
+    } else {
+      badgeNav.hidden = true;
+    }
+  }
+
+  const banner = document.getElementById("aviso-liberacao-banner");
+  if (!banner) return;
+
+  const avisoCli = pedInfo.ultimoAvisoCliente;
+  if (avisoCli && avisoCli.status === "aprovado") {
+    banner.hidden = false;
+    banner.className = "notice notice-ok";
+    banner.style.cssText =
+      "display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; border:2px solid var(--ok); margin-bottom:14px;";
+    banner.innerHTML = `
+      <div>
+        <strong>🎉 ACESSO PRO LIBERADO POR JONAS MENDONÇA!</strong>
+        <span>${escHtml(avisoCli.avisoParaCliente || "Todas as ferramentas da Versão PRO já estão abertas para você!")}</span>
+        ${avisoCli.chaveGerada ? `<span class="badge badge-ok mono" style="margin-left:6px;">Chave: ${escHtml(avisoCli.chaveGerada)}</span>` : ""}
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button type="button" class="btn btn-sm" data-atalho-aba="liberar_pro">Ver Detalhes</button>
+        <button type="button" class="btn btn-primary btn-sm" data-confirmar-aviso-pro="${escHtml(avisoCli.id)}">✅ Entendi</button>
+      </div>
+    `;
+    return;
+  }
+
+  if (avisoCli && avisoCli.status === "recusado") {
+    banner.hidden = false;
+    banner.className = "notice notice-warn";
+    banner.style.cssText =
+      "display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; border:2px solid var(--warn); margin-bottom:14px;";
+    banner.innerHTML = `
+      <div>
+        <strong>⏳ Aviso do Técnico Jonas Mendonça:</strong>
+        <span>${escHtml(avisoCli.avisoParaCliente || "Aguardando confirmação no WhatsApp (11) 96670-7293 para liberar o Acesso PRO.")}</span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a class="btn btn-primary btn-sm" href="https://wa.me/5511966707293?text=${encodeURIComponent(`Olá Jonas! Sobre o meu pedido ${avisoCli.id} de liberação PRO no Windows Boost.`)}" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+        <button type="button" class="btn btn-sm" data-confirmar-aviso-pro="${escHtml(avisoCli.id)}">Fechar Aviso</button>
+      </div>
+    `;
+    return;
+  }
+
+  if (pendentes > 0) {
+    const ultimo = (pedInfo.pedidos || []).find((p) => p.status === "pendente");
+    banner.hidden = false;
+    banner.className = "notice notice-info";
+    banner.style.cssText =
+      "display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; border:2px solid var(--primary); margin-bottom:14px;";
+    banner.innerHTML = `
+      <div>
+        <strong>🔔 Pedido de Liberação PRO Aguardando Aprovação (${pendentes})!</strong>
+        <span>Cliente: <strong>${escHtml(ultimo?.nomeCliente || "Cliente")}</strong> (${escHtml(ultimo?.hostname || "PC")}) pediu acesso PRO em ${escHtml(ultimo?.criadoEm || "agora")}.</span>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" data-atalho-aba="liberar_pro">🔑 Abrir Aba e Liberar PRO</button>
+    `;
+    return;
+  }
+
+  banner.hidden = true;
+  banner.innerHTML = "";
 }
 
 function ehVersaoLite() {
@@ -888,6 +1125,7 @@ function abaLiberadaNaEdicao(aba) {
   if (!ehVersaoLite()) return true;
   const permitidas = estado.edicaoInfo?.abasLite || [
     "visao_geral",
+    "liberar_pro",
     "assistente",
     "otimizar_windows",
     "otimizar_jogos",
@@ -906,7 +1144,7 @@ function renderTelaUpgradePro(abaSolicitada) {
           <span class="badge badge-info">🔒 Exclusivo da Versão Completa (PRO)</span>
           <h2 class="section-title" style="margin-top:8px;">${escHtml(tituloAba)}</h2>
           <p class="item-desc">
-            Você está usando a <strong>Versão LITE (Mais Baixa / Essencial)</strong>. Para liberar a bancada técnica completa, ative a <strong>Versão PRO</strong> com sua chave ou fale com o técnico <strong>Jonas Mendonça</strong>.
+            Você está usando a <strong>Versão LITE (Mais Baixa / Essencial)</strong>. Para liberar a bancada técnica completa, peça a liberação ao técnico <strong>Jonas Mendonça</strong> ou digite sua chave PRO.
           </p>
         </div>
       </div>
@@ -929,13 +1167,160 @@ function renderTelaUpgradePro(abaSolicitada) {
       </div>
 
       <div class="toolbar" style="margin-top:14px;">
-        <input type="text" class="input-field mono" id="input-chave-ativacao-pro" placeholder="Digite sua chave PRO (ex.: WBP-PRO-XXXX-XXXX ou JONAS-PRO-2026)">
-        <button type="button" class="btn btn-primary" id="btn-ativar-chave-pro">🔓 Ativar Versão PRO Agora</button>
+        <button type="button" class="btn btn-primary" data-atalho-aba="liberar_pro">🔑 Pedir Liberação PRO ao Jonas</button>
+        <input type="text" class="input-field mono" id="input-chave-ativacao-pro" placeholder="Ou digite sua chave PRO (ex.: WBP-PRO-XXXX-XXXX)">
+        <button type="button" class="btn" id="btn-ativar-chave-pro">🔓 Ativar com Chave</button>
         <a class="btn" href="https://wa.me/5511966707293?text=${encodeURIComponent("Olá Jonas! Quero ativar a Versão Completa (PRO) do Windows Boost Pro.")}" target="_blank" rel="noopener">
-          💬 Solicitar Chave no WhatsApp
+          💬 Falar no WhatsApp
         </a>
       </div>
     </article>
+  `;
+}
+
+function renderLiberarPro() {
+  const hw = estado.hardware || {};
+  const pedInfo = estado.pedidosProInfo || { pedidos: [], pendentes: 0, ultimoAvisoCliente: null };
+  const pedidos = pedInfo.pedidos || [];
+  const pendentes = pedidos.filter((p) => p.status === "pendente");
+  const aprovados = pedidos.filter((p) => p.status === "aprovado");
+  const ehLite = ehVersaoLite();
+
+  const cardStatusAtual = ehLite
+    ? `
+      <div class="notice notice-info" style="border:2px solid var(--primary);">
+        <strong>⚡ Você está usando a Versão LITE (Básica).</strong>
+        <span>Preencha seus dados abaixo e clique em <strong>Pedir Liberação do PRO</strong>. Assim que o técnico Jonas aprovar, um aviso verde aparecerá na sua tela liberando todas as abas!</span>
+      </div>
+    `
+    : `
+      <div class="notice notice-ok" style="border:2px solid var(--ok);">
+        <strong>👑 Versão PRO (Completa) está ATIVA neste painel!</strong>
+        <span>Você pode aprovar abaixo os pedidos dos clientes que estão no LITE e enviar o aviso de liberação na tela deles.</span>
+      </div>
+    `;
+
+  const listaPedidosHtml =
+    pedidos.length === 0
+      ? `<p class="metric-meta">Nenhum pedido de liberação registrado ainda. Quando um cliente na versão LITE clicar em "Pedir Liberação do PRO", o pedido e o aviso aparecerão aqui na hora!</p>`
+      : pedidos
+          .map((p) => {
+            const clsBadge =
+              p.status === "aprovado" ? "badge-ok" : p.status === "recusado" ? "badge-warn" : "badge-info";
+            const txtStatus =
+              p.status === "aprovado"
+                ? "✅ PRO Liberado"
+                : p.status === "recusado"
+                  ? "⏳ Aguardando Pagamento"
+                  : "🔔 Pedido Pendente";
+            const fone = String(p.whatsappCliente || "").replace(/\D/g, "");
+            const txtZapResp = `Olá ${p.nomeCliente}! Seu acesso ao Windows Boost PRO foi LIBERADO! 🎉\nChave: ${p.chaveGerada || "Ativado no painel"}\n${p.avisoParaCliente || ""}`;
+            const linkZapCli =
+              fone.length >= 10
+                ? `https://wa.me/${fone.startsWith("55") ? fone : `55${fone}`}?text=${encodeURIComponent(txtZapResp)}`
+                : `https://wa.me/?text=${encodeURIComponent(txtZapResp)}`;
+            return `
+              <div class="list-item" style="flex-direction:column; align-items:stretch; gap:8px; border-left:4px solid ${p.status === "aprovado" ? "var(--ok)" : p.status === "recusado" ? "var(--warn)" : "var(--primary)"};">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <div>
+                    <strong class="item-title">${escHtml(p.nomeCliente)} <span class="mono" style="font-size:0.8rem; color:var(--text-muted);">(${escHtml(p.id)})</span></strong>
+                    <p class="item-desc" style="margin:2px 0 0;">
+                      💻 PC: <strong>${escHtml(p.hostname || "PC")}</strong> · 🕒 ${escHtml(p.criadoEm)}
+                      ${p.whatsappCliente ? ` · 📞 ${escHtml(p.whatsappCliente)}` : ""}
+                    </p>
+                    ${p.observacao ? `<p class="item-desc" style="margin:2px 0 0;">💬 "${escHtml(p.observacao)}"</p>` : ""}
+                    ${p.avisoParaCliente ? `<p class="item-desc" style="margin:4px 0 0; color:var(--ok);"><strong>📢 Aviso exibido ao cliente:</strong> ${escHtml(p.avisoParaCliente)}</p>` : ""}
+                    ${p.chaveGerada ? `<p class="item-desc mono" style="margin:2px 0 0;">🔑 Chave gerada: <strong>${escHtml(p.chaveGerada)}</strong></p>` : ""}
+                  </div>
+                  <span class="badge ${clsBadge}">${txtStatus}</span>
+                </div>
+                <div class="toolbar" style="margin:0;">
+                  ${
+                    p.status !== "aprovado"
+                      ? `<button type="button" class="btn btn-primary btn-sm" data-decidir-pedido-pro="aprovar" data-pedido-id="${escHtml(p.id)}">✅ Liberar PRO + Enviar Aviso ao Cliente</button>`
+                      : ""
+                  }
+                  ${
+                    p.status === "pendente"
+                      ? `<button type="button" class="btn btn-sm" data-decidir-pedido-pro="recusar" data-pedido-id="${escHtml(p.id)}">⏳ Avisar: Aguardando Pagamento</button>`
+                      : ""
+                  }
+                  ${
+                    p.status === "aprovado"
+                      ? `<a class="btn btn-sm" href="${linkZapCli}" target="_blank" rel="noopener">📲 Mandar Chave no WhatsApp do Cliente</a>`
+                      : ""
+                  }
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+
+  return `
+    ${cardStatusAtual}
+
+    <div class="cards-grid" style="margin-top:12px;">
+      <article class="panel" style="border: 1px solid var(--primary);">
+        <div class="section-head">
+          <div>
+            <span class="badge badge-info">1. Área do Cliente (Modo LITE)</span>
+            <h2 class="section-title" style="margin-top:6px;">📩 Pedir Liberação do Acesso PRO</h2>
+            <p class="item-desc">Está usando a versão LITE e quer desbloquear todas as 14 abas? Peça liberação agora para o técnico Jonas Mendonça.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+          <input type="text" class="input-field" id="input-pedido-nome" placeholder="Seu Nome (ex.: Carlos Silva)">
+          <input type="text" class="input-field" id="input-pedido-whatsapp" placeholder="Seu WhatsApp com DDD (ex.: 11 99999-9999)">
+          <input type="text" class="input-field" id="input-pedido-obs" placeholder="Mensagem opcional (ex.: Já fiz o Pix / Preciso da bancada de drivers)">
+          <div class="toolbar" style="margin:0;">
+            <button type="button" class="btn btn-primary" id="btn-solicitar-liberacao-pro">📩 Pedir Liberação do PRO Agora</button>
+            ${
+              estado.ultimoLinkZapPedido
+                ? `<a class="btn" href="${estado.ultimoLinkZapPedido}" target="_blank" rel="noopener">💬 Avisar Jonas no WhatsApp</a>`
+                : ""
+            }
+          </div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:16px 0;">
+
+        <h3 class="item-title">🔑 Já recebeu uma chave PRO do Jonas?</h3>
+        <div class="toolbar" style="margin-top:8px;">
+          <input type="text" class="input-field mono" id="input-chave-ativacao-pro" placeholder="Digite sua chave (ex.: WBP-PRO-XXXX-XXXX)">
+          <button type="button" class="btn btn-primary" id="btn-ativar-chave-pro">🔓 Ativar PRO</button>
+        </div>
+      </article>
+
+      <article class="panel" style="border: 1px solid var(--ok);">
+        <div class="section-head">
+          <div>
+            <span class="badge badge-ok">2. Central do Técnico Jonas</span>
+            <h2 class="section-title" style="margin-top:6px;">🛡️ Aprovar Pedidos &amp; Avisar Cliente</h2>
+            <p class="item-desc">
+              Pendentes: <strong>${pendentes.length}</strong> · Liberados: <strong>${aprovados.length}</strong> · PC atual: <strong class="mono">${escHtml(hw.hostname || "PC")}</strong>
+            </p>
+          </div>
+          <button type="button" class="btn btn-sm" id="btn-atualizar-pedidos-pro">🔄 Atualizar Fila</button>
+        </div>
+
+        <div style="margin:10px 0;">
+          <label class="metric-meta" for="input-aviso-personalizado-pro" style="display:block; margin-bottom:4px;">
+            📢 <strong>Aviso que o cliente vai ver na tela</strong> ao liberar (opcional — deixe em branco para usar o padrão):
+          </label>
+          <input
+            type="text"
+            class="input-field"
+            id="input-aviso-personalizado-pro"
+            placeholder="Ex.: Acesso PRO liberado com sucesso por Jonas Mendonça! Obrigado pela confiança."
+          >
+        </div>
+
+        <div class="list-stack" style="margin-top:10px;">
+          ${listaPedidosHtml}
+        </div>
+      </article>
+    </div>
   `;
 }
 
@@ -3029,6 +3414,9 @@ function renderizar() {
     case "visao_geral":
       container.innerHTML = renderVisaoGeral();
       break;
+    case "liberar_pro":
+      container.innerHTML = renderLiberarPro();
+      break;
     case "assistente":
       container.innerHTML = renderAssistente();
       break;
@@ -3131,6 +3519,82 @@ function registrarEventos() {
         renderizar();
       }
       definirConsole(ok && data.ok, "Gerador de Chaves PRO", data.mensagem || "Chave gerada.");
+      return;
+    }
+
+    if (ev.target.id === "btn-solicitar-liberacao-pro") {
+      const nomeCliente = (document.getElementById("input-pedido-nome")?.value || "").trim();
+      const whatsappCliente = (document.getElementById("input-pedido-whatsapp")?.value || "").trim();
+      const observacao = (document.getElementById("input-pedido-obs")?.value || "").trim();
+      const { ok, data } = await apiPost("/api/edicao/pedidos/solicitar", {
+        nomeCliente,
+        whatsappCliente,
+        observacao,
+        hostname: estado.hardware?.hostname || "",
+        uuidHardware: estado.hardware?.uuidHardware || "",
+      });
+      if (ok && data.ok) {
+        estado.pedidosProInfo = {
+          pedidos: data.pedidos || [],
+          pendentes: data.pendentes || 0,
+          ultimoAvisoCliente: data.ultimoAvisoCliente || null,
+        };
+        estado.ultimoLinkZapPedido = data.linkWhatsappJonas || "";
+        atualizarAvisosLiberacaoPro();
+        renderizar();
+        mostrarToastRapido(true, "Pedido Enviado ao Jonas!", data.mensagem);
+      }
+      definirConsole(ok && data.ok, "Pedido de Liberação PRO", data.mensagem || "Pedido registrado.");
+      return;
+    }
+
+    const decidirBtn = ev.target.closest("[data-decidir-pedido-pro]");
+    if (decidirBtn) {
+      const acao = decidirBtn.dataset.decidirPedidoPro;
+      const id = decidirBtn.dataset.pedidoId;
+      const avisoPersonalizado = (document.getElementById("input-aviso-personalizado-pro")?.value || "").trim();
+      const { ok, data } = await apiPost("/api/edicao/pedidos/decidir", { id, acao, avisoPersonalizado });
+      if (ok && data.ok) {
+        estado.pedidosProInfo = {
+          pedidos: data.pedidos || [],
+          pendentes: data.pendentes || 0,
+          ultimoAvisoCliente: data.ultimoAvisoCliente || null,
+        };
+        if (data.edicaoInfo?.edicao) {
+          estado.edicaoInfo = data.edicaoInfo;
+        }
+        atualizarBarraLateral();
+        renderizar();
+        mostrarToastRapido(true, acao === "aprovar" ? "PRO Liberado!" : "Aviso Enviado", data.mensagem);
+      }
+      definirConsole(ok && data.ok, "Central de Liberação PRO", data.mensagem || "Atualizado.");
+      return;
+    }
+
+    const confAvisoBtn = ev.target.closest("[data-confirmar-aviso-pro]");
+    if (confAvisoBtn) {
+      const id = confAvisoBtn.dataset.confirmarAvisoPro;
+      const { ok, data } = await apiPost("/api/edicao/pedidos/decidir", { id, acao: "limpar_aviso" });
+      if (ok && data.ok) {
+        estado.pedidosProInfo = {
+          pedidos: data.pedidos || [],
+          pendentes: data.pendentes || 0,
+          ultimoAvisoCliente: data.ultimoAvisoCliente || null,
+        };
+        atualizarAvisosLiberacaoPro();
+        renderizar();
+      }
+      return;
+    }
+
+    if (ev.target.id === "btn-atualizar-pedidos-pro") {
+      const ped = await apiGet("/api/edicao/pedidos");
+      if (ped?.ok) {
+        estado.pedidosProInfo = ped;
+        atualizarAvisosLiberacaoPro();
+        renderizar();
+        mostrarToastRapido(true, "Fila Atualizada", `${ped.pendentes || 0} pedido(s) aguardando liberação.`);
+      }
       return;
     }
   });
