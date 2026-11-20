@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Windows Boost Pro — Vitrine Oficial (Versão LITE vs. Versão PRO) | Jonas Mendonça</title>
+  <meta name="description" content="Vitrine oficial do Windows Boost LITE e Windows Boost PRO: otimização segura, bancada de hardware em 6 etapas, backup de drivers, reconhecimento do PC e laudo em PDF.">
+  <meta name="theme-color" content="#0c1015">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <style>
+    :root {
+      --bg: #0c1015;
+      --surface: #131922;
+      --surface-2: #19222e;
+      --border: #253142;
+      --border-strong: #36475f;
+      --text: #eef2f7;
+      --muted: #93a3b8;
+      --primary: #38bdf8;
+      --on-primary: #06131d;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --font-sans: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-mono: "Cascadia Code", "Consolas", monospace;
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; overflow-x: clip;
+      background-color: var(--bg); color: var(--text);
+      font-family: var(--font-sans); line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+    /* Navegação superior limpa */
+    .nav {
+      position: sticky; top: 0; z-index: 30;
+      background-color: rgba(12, 16, 21, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 14px 0; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
+    .brand img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    /* Botões */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 18px; min-height: 44px; border-radius: 8px;
+      border: 1px solid var(--border-strong); background-color: var(--surface-2);
+      color: var(--text); font-weight: 600; font-size: 0.9375rem; cursor: pointer;
+      transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+    }
+    .btn:hover { border-color: var(--primary); background-color: #1f2b3a; }
+    .btn-primary {
+      background-color: var(--primary); border-color: var(--primary); color: var(--on-primary);
+    }
+    .btn-primary:hover { background-color: #7dd3fc; border-color: #7dd3fc; }
+    .btn-ok {
+      background-color: var(--ok); border-color: var(--ok); color: #052e16;
+    }
+    .btn-ok:hover { background-color: #4ade80; border-color: #4ade80; }
+
+    /* Hero */
+    .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 28px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 999px; font-size: 0.8125rem; font-weight: 700;
+      color: var(--primary); background-color: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35); margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 0 14px; font-size: clamp(1.9rem, 4vw, 2.95rem); line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .lead { margin: 0 0 24px; color: var(--muted); font-size: 1.0625rem; max-width: 60ch; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-stats {
+      background-color: var(--surface); border: 1px solid var(--border-strong);
+      border-radius: var(--radius); padding: 22px; display: grid; gap: 14px;
+    }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .stat-row:last-child { padding-bottom: 0; border-bottom: none; }
+    .stat-label { color: var(--muted); font-size: 0.875rem; }
+    .stat-val { font-weight: 700; color: var(--text); text-align: right; }
+
+    /* Seções */
+    .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    .sec-title { margin: 0 0 8px; font-size: clamp(1.4rem, 2.6vw, 1.95rem); }
+    .sec-sub { margin: 0 0 28px; color: var(--muted); max-width: 65ch; }
+
+    /* Cards das 2 Versões */
+    .plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .plan-card {
+      background-color: var(--surface); border: 1px solid var(--border-strong);
+      border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .plan-pro {
+      border: 2px solid var(--ok);
+      background: linear-gradient(160deg, rgba(34, 197, 94, 0.1), var(--surface) 45%);
+    }
+    .plan-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .badge {
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 700; border: 1px solid var(--border-strong);
+    }
+    .badge-lite { color: var(--primary); border-color: var(--primary); background: rgba(56, 189, 248, 0.12); }
+    .badge-pro { color: var(--ok); border-color: var(--ok); background: rgba(34, 197, 94, 0.14); }
+    .price { font-size: 2rem; font-weight: 800; line-height: 1.1; }
+    .price small { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    .feat-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+    .feat-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.9375rem; }
+    .plan-foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding-top: 10px; }
+
+    /* Diferenciais técnicos */
+    .cards-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .mini-card {
+      background-color: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px;
+    }
+    .mini-card h3 { margin: 0 0 8px; font-size: 1.02rem; }
+    .mini-card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+    /* Rodapé */
+    .footer { padding: 34px 0 48px; color: var(--muted); font-size: 0.9rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .mono { font-family: var(--font-mono); font-size: 0.85rem; }
+
+    @media (max-width: 860px) {
+      .hero-grid, .plans-grid, .cards-3 { grid-template-columns: 1fr; }
+      .hero { padding: 32px 0 28px; }
+      .section { padding: 32px 0; }
+      .hero-cta .btn, .nav-actions .btn { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./vitrine.html">
+        <img src="./icon.svg" alt="Ícone Windows Boost Pro">
+        <span>Windows Boost Pro <small style="color:var(--muted); font-weight:500;">· Jonas Mendonça</small></span>
+      </a>
+      <nav class="nav-actions" aria-label="Ações rápidas">
+        <a class="btn" href="./?edicao=lite">⚡ Abrir Versão LITE</a>
+        <a class="btn btn-primary" href="./?edicao=pro">👑 Abrir Versão PRO</a>
+        <a class="btn btn-ok" href="https://wa.me/5511966707293?text=Ol%C3%A1%20Jonas!%20Vi%20a%20vitrine%20do%20Windows%20Boost%20Pro%20e%20quero%20saber%20mais." target="_blank" rel="noopener">
+          💬 WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">🚀 Suíte Universal · PC · Notebook · Mac · Linux · Celular</span>
+          <h1>Deixe qualquer PC rápido, seguro e diagnosticado em 6 etapas.</h1>
+          <p class="lead">
+            Escolha a <strong>Versão LITE</strong> (essencial e 100% segura para o dia a dia) ou a <strong>Versão PRO</strong> (bancada técnica completa com 131 drivers, reconhecimento automático pós-formatação, backup na nuvem Google Drive e Laudo em PDF).
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-ok" href="./?edicao=pro">👑 Abrir Painel Completo (PRO)</a>
+            <a class="btn btn-primary" href="./?edicao=lite">⚡ Testar Versão LITE (Mais Básica)</a>
+            <a class="btn" href="https://wa.me/5511966707293?text=Ol%C3%A1%20Jonas!%20Quero%20agendar%20atendimento%20ou%20adquirir%20a%20Vers%C3%A3o%20PRO%20do%20Windows%20Boost%20Pro." target="_blank" rel="noopener">
+              💬 Falar com Jonas Mendonça
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-stats" aria-label="Resumo técnico da plataforma">
+          <div class="stat-row">
+            <span class="stat-label">Otimizações Reversíveis</span>
+            <span class="stat-val">61 ajustes + Perfis 1-Clique</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Bancada de Hardware</span>
+            <span class="stat-val">6 Etapas + Laudo PDF &amp; WhatsApp</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Backup &amp; Pós-Formatação</span>
+            <span class="stat-val">Drivers + Chaves BIOS + Google Drive</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Compatibilidade Total</span>
+            <span class="stat-val">Windows 10/11 · Mac · Linux · App PWA</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Técnico Responsável</span>
+            <span class="stat-val">Jonas Mendonça · (11) 96670-7293</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="versoes">
+      <div class="wrap">
+        <h2 class="sec-title">Escolha a Versão Ideal para Você</h2>
+        <p class="sec-sub">Duas edições oficiais no mesmo sistema: uma versão mais básica e segura para clientes finais e uma versão completa de bancada para manutenção profissional.</p>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <div class="plan-head">
+              <div>
+                <h3 style="margin:0; font-size:1.35rem;">⚡ Windows Boost LITE</h3>
+                <p style="margin:4px 0 0; color:var(--muted); font-size:0.9rem;">Versão Essencial &amp; Segura (Cliente Final)</p>
+              </div>
+              <span class="badge badge-lite">Mais Básica</span>
+            </div>
+            <div class="price">Grátis <small>/ Demonstração ou Uso Pessoal</small></div>
+            <ul class="feat-list">
+              <li>✅ <strong>Visão Geral ao Vivo:</strong> CPU, RAM, Disco, Bateria e Temperatura</li>
+              <li>✅ <strong>Modo Windows 10 &amp; 11 Bem Liso:</strong> apenas ajustes 100% seguros</li>
+              <li>✅ <strong>Assistente de Defeitos:</strong> resolve lentidão, internet e espaço cheio</li>
+              <li>✅ <strong>Otimizador de Jogos + Teste de Ping DNS + Limpeza de RAM</strong></li>
+              <li>✅ <strong>Botão Direto de Suporte Técnico no WhatsApp</strong></li>
+              <li style="color:var(--muted);">🔒 Bancada 6 Etapas, Backup de Drivers, Ninite e Laudo PDF (só na PRO)</li>
+            </ul>
+            <div class="plan-foot">
+              <a class="btn btn-primary" href="./?edicao=lite">▶ Abrir Versão LITE Agora</a>
+            </div>
+          </article>
+
+          <article class="plan-card plan-pro">
+            <div class="plan-head">
+              <div>
+                <h3 style="margin:0; font-size:1.35rem; color:var(--ok);">👑 Windows Boost PRO</h3>
+                <p style="margin:4px 0 0; color:var(--muted); font-size:0.9rem;">Versão Completa de Bancada &amp; Atendimento Técnico</p>
+              </div>
+              <span class="badge badge-pro">Completa · Recomendada</span>
+            </div>
+            <div class="price">R$ 150,00 <small>/ Atendimento Completo ou Licença PRO</small></div>
+            <ul class="feat-list">
+              <li>🚀 <strong>Tudo da Versão LITE + todas as 13 abas liberadas</strong></li>
+              <li>🔬 <strong>Bancada de Hardware em 6 Etapas:</strong> Fonte, S.M.A.R.T., Térmica, RAM/BSOD, Rede e Carimbo</li>
+              <li>🎯 <strong>Reconhecimento Automático do Mesmo PC:</strong> identifica por UUID/Placa-Mãe/MAC mesmo após formatar e puxa drivers de volta em 1 clique</li>
+              <li>💾 <strong>Backup Completo (PenDrive + Nuvem Google Drive):</strong> Chaves BIOS/Windows, 131 drivers, lista de programas e laudos</li>
+              <li>📦 <strong>Kit Pós-Formatação (22 Apps Ninite) + PenDrive Portátil sem precisar instalar nada</strong></li>
+              <li>📄 <strong>Emissor de Laudo PDF + Ordem de Serviço + Acesso Remoto Integrado + Gerador de Chaves</strong></li>
+            </ul>
+            <div class="plan-foot">
+              <a class="btn btn-ok" href="./?edicao=pro">👑 Abrir Versão PRO Completa</a>
+              <a class="btn" href="https://wa.me/5511966707293?text=Ol%C3%A1%20Jonas!%20Quero%20contratar%20o%20atendimento%20ou%20liberar%20minha%20Chave%20PRO%20do%20Windows%20Boost%20Pro." target="_blank" rel="noopener">
+                💬 Solicitar Chave PRO / Agendar Atendimento
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="sec-title">Por que o Windows Boost Pro é Diferente?</h2>
+        <p class="sec-sub">Construído na prática de bancada real para funcionar sem depender de internet, sem instalar lixo e deixando comprovação técnica profissional para o cliente.</p>
+        <div class="cards-3">
+          <div class="mini-card">
+            <h3>🔌 100% Portátil no PenDrive</h3>
+            <p>Roda direto do PenDrive em qualquer PC ou Notebook Windows — mesmo recém-formatado e sem Node.js instalado — abrindo a mesma tela visual completa.</p>
+          </div>
+          <div class="mini-card">
+            <h3>☁️ Cofre Local + Google Drive</h3>
+            <p>Salva automaticamente chaves da BIOS, drivers, lista de programas e laudos de cada máquina arrumada, com envio rápido em .ZIP para a nuvem.</p>
+          </div>
+          <div class="mini-card">
+            <h3>📱 App no Celular, Mac e Linux</h3>
+            <p>Interface responsiva instalável como Aplicativo (PWA) com modo offline, leitura real do aparelho no celular e iniciadores dedicados para Mac e Linux.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong style="color:var(--text);">Jonas Mendonça — Assistência Técnica Especializada &amp; Suporte Remoto</strong><br>
+        <span class="mono">WhatsApp: (11) 96670-7293 · E-mail: jonas.skynet@gmail.com</span>
+      </div>
+      <div class="nav-actions">
+        <a class="btn" href="https://github.com/jonasskynet-eng/windows-boost-pro" target="_blank" rel="noopener">Código no GitHub</a>
+        <a class="btn btn-primary" href="./?edicao=pro">Abrir Painel</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

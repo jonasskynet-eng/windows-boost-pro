@@ -1,0 +1,3954 @@
+{
+  "hardware": {
+    "hostname": "BANCADA-WINDOWS-PRO",
+    "sistema": "Windows 10/11 Pro (x64)",
+    "cpuModelo": "Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz",
+    "cpuNucleos": 8,
+    "ramTotalGB": 16,
+    "ramUsadaGB": 7.4,
+    "ramLivreGB": 8.6,
+    "ramPercentual": 46,
+    "uptimeFormatado": "3h 40min",
+    "ehAdmin": true,
+    "marcaGpu": "AMD",
+    "temSSD": true,
+    "temperaturaCpuC": 29.9,
+    "gpus": [
+      {
+        "nome": "AMD Radeon HD 5450",
+        "driver": "15.201.2401.0",
+        "vramMB": 1024
+      }
+    ],
+    "discos": [
+      {
+        "nome": "SATA SSD 240GB (Sistema)",
+        "tipo": "SSD",
+        "barramento": "SATA",
+        "tamanhoGB": 240,
+        "saude": "Saudável (100%)",
+        "statusOp": "OK",
+        "temperaturaC": 31
+      },
+      {
+        "nome": "SATA SSD 240GB (Dados)",
+        "tipo": "SSD",
+        "barramento": "SATA",
+        "tamanhoGB": 240,
+        "saude": "Saudável (100%)",
+        "statusOp": "OK",
+        "temperaturaC": 30
+      }
+    ],
+    "productId": "00330-80000-00000-AA174",
+    "modoBios": "UEFI / Padrão",
+    "secureBoot": "Desativado",
+    "estiloParticaoDiscos": "ATA SSD 240GB: GPT | ATA 240GB: MBR",
+    "gatewayRoteador": "192.168.100.1",
+    "dnsConfigurado": "192.168.100.1",
+    "macAddress": "64-1C-67-69-FA-E3",
+    "velocidadeRede": "1 Gbps",
+    "chaveOemBios": "XVNQX-XXXXX-XXXXX-XXXXX-QGJYP (OEM BIOS)",
+    "chaveRegistro": "VK7JG-NPHTM-C97JM-9MPGT-3V66T"
+  },
+  "catalogo": {
+    "categorias": [
+      {
+        "id": "backup",
+        "nome": "Backup e Restauração"
+      },
+      {
+        "id": "windows_energia",
+        "nome": "Energia e Processador"
+      },
+      {
+        "id": "windows_sistema",
+        "nome": "Sistema, Visual e Privacidade"
+      },
+      {
+        "id": "ram",
+        "nome": "Memória RAM e Cache"
+      },
+      {
+        "id": "rede",
+        "nome": "Rede e Ping"
+      },
+      {
+        "id": "gpu",
+        "nome": "Placa de Vídeo (GPU)"
+      },
+      {
+        "id": "reparo",
+        "nome": "Reparo de Erros"
+      }
+    ],
+    "perfis": [
+      {
+        "id": "perfil_windows_liso",
+        "nome": "🚀 Modo Windows 10 & 11 Bem Liso (Fluidez Máxima)",
+        "descricao": "Configura o Windows 10 e o Windows 11 para rodarem 100% lisos e sem engasgos: zera atraso de menus (0ms), desliga transparência pesada (Mica/Acrílico), remove Notícias/Clima (Win 10) e Recall/Copilot/Bing/Widgets (Win 11), prioriza a janela ativa na CPU e limpa caches.",
+        "itens": [
+          "backup_registro",
+          "win10_11_fluidez_interface",
+          "win10_desativar_noticias_barra",
+          "win11_desativar_recall_anuncios",
+          "github_debloat_copilot_bing_widgets",
+          "github_winutil_explorer_tecnico",
+          "desativar_apps_segundo_plano",
+          "otimizar_menu_iniciar",
+          "prioridade_foreground",
+          "limpar_cache_windows",
+          "limpar_dns"
+        ]
+      },
+      {
+        "id": "perfil_seguro",
+        "nome": "Perfil Seguro (Uso Diário)",
+        "descricao": "Faz backup do registro, ativa energia equilibrada para desempenho, Modo de Jogo, reduz telemetria/apps em segundo plano e limpa cache e DNS — 100% reversível e sem tocar em segurança.",
+        "itens": [
+          "backup_registro",
+          "energia_alto_desempenho",
+          "ativar_modo_jogo",
+          "desativar_apps_segundo_plano",
+          "desativar_telemetria",
+          "otimizar_menu_iniciar",
+          "limpar_cache_windows",
+          "limpar_dns"
+        ]
+      },
+      {
+        "id": "perfil_gamer_seguro",
+        "nome": "Perfil Gamer Seguro",
+        "descricao": "Backup prévio + foco máximo em prioridade de GPU/CPU, janela em primeiro plano, mouse sem aceleração, USB sem suspensão, MPO desativado e limpeza de cache/DNS.",
+        "itens": [
+          "backup_registro",
+          "energia_alto_desempenho",
+          "ativar_modo_jogo",
+          "otimizar_gamebar",
+          "prioridade_cpu_gpu",
+          "prioridade_foreground",
+          "desativar_aceleracao_mouse",
+          "desativar_usb_suspensao",
+          "desativar_mpo",
+          "limpar_cache_windows",
+          "limpar_dns"
+        ]
+      }
+    ],
+    "itens": [
+      {
+        "id": "ponto_restauracao",
+        "titulo": "Criar Ponto de Restauração do Windows",
+        "descricao": "Cria um ponto de restauração oficial do sistema antes de qualquer alteração avançada para você voltar tudo com segurança.",
+        "categoria": "backup",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "backup_registro",
+        "titulo": "Exportar Cópia de Segurança do Registro",
+        "descricao": "Salva cópia local das chaves de rede, energia, jogos e inicialização na pasta backups/ do projeto em formato .reg.",
+        "categoria": "backup",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "energia_alto_desempenho",
+        "titulo": "Plano de Energia Alto Desempenho",
+        "descricao": "Ativa o plano Alto Desempenho (ou Desempenho Máximo se disponível) para evitar oscilações de clock do processador.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_power_throttling",
+        "titulo": "Desativar Power Throttling",
+        "descricao": "Impede o Windows de reduzir artificialmente a velocidade de processos em segundo plano para economizar energia.",
+        "categoria": "windows_energia",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_ecoqos",
+        "titulo": "Desativar EcoQoS (Modo Eficiência Forçada)",
+        "descricao": "Desativa políticas de eficiência energética agressiva aplicadas a processos no Windows 10/11.",
+        "categoria": "windows_energia",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_usb_suspensao",
+        "titulo": "Desativar Suspensão Seletiva de USB",
+        "descricao": "Evita que o Windows desligue portas USB por economia de energia, prevenindo falhas ou atraso em mouse, teclado e headset.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_pcie_economia",
+        "titulo": "Desativar Economia Agressiva no PCIe",
+        "descricao": "Desativa o gerenciamento agressivo de energia do barramento PCI Express para placa de vídeo e SSD NVMe responderem sem atraso.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "prioridade_foreground",
+        "titulo": "Aumentar Prioridade da Janela Ativa (Foreground)",
+        "descricao": "Ajusta Win32PrioritySeparation para dar mais fatia de CPU ao aplicativo ou jogo aberto em primeiro plano.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "prioridade_cpu_gpu",
+        "titulo": "Otimizar Agendamento Multimídia de CPU/GPU",
+        "descricao": "Define alta prioridade de GPU e CPU para tarefas multimídia e jogos no perfil do sistema do Windows.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "ajustar_timer_resolution",
+        "titulo": "Ajustar Resolução do Temporizador (Timer Resolution)",
+        "descricao": "Habilita requisições globais de temporizador de alta precisão no kernel para reduzir micro-engasgos.",
+        "categoria": "windows_energia",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_efeitos_visuais",
+        "titulo": "Reduzir Efeitos Visuais Pesados do Windows",
+        "descricao": "Configura efeitos visuais do Explorer para melhor desempenho mantendo suavização básica de fontes.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_menu_iniciar",
+        "titulo": "Otimizar Menu Iniciar (Remover Sugestões)",
+        "descricao": "Desativa anúncios, sugestões e rastreamento de aplicativos recomendados no Menu Iniciar.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_aceleracao_mouse",
+        "titulo": "Desativar Aceleração do Mouse",
+        "descricao": "Remove o aprimoramento de precisão do ponteiro para deixar a mira 1:1 previsível em jogos e edição.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_apps_segundo_plano",
+        "titulo": "Restringir Apps da Loja em Segundo Plano",
+        "descricao": "Impede que aplicativos UWP/Microsoft Store fiquem consumindo CPU e RAM ocultos sem você estar usando.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_telemetria",
+        "titulo": "Desativar Telemetria e Coleta de Diagnóstico",
+        "descricao": "Reduz envio de dados de telemetria e interrompe o serviço DiagTrack em segundo plano.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_relatorios_erro",
+        "titulo": "Desativar Relatórios de Erro do Windows",
+        "descricao": "Desativa o serviço WerSvc (Windows Error Reporting) que coleta e envia relatórios após fechamento de programas.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_cortana",
+        "titulo": "Desativar Cortana Integrada",
+        "descricao": "Desativa políticas de inicialização e pesquisa em segundo plano da Cortana.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_indexacao",
+        "titulo": "Desativar Indexação de Pesquisa (Windows Search)",
+        "descricao": "Para o serviço WSearch em segundo plano (ótimo para HD mecânico lento; em SSD moderno a diferença é pequena).",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "ativar_modo_jogo",
+        "titulo": "Ativar Modo de Jogo do Windows",
+        "descricao": "Habilita o Game Mode nativo para reduzir notificações e tarefas do Windows Update durante jogos.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_gamebar",
+        "titulo": "Desativar Gravação em Segundo Plano da GameBar",
+        "descricao": "Desliga o GameDVR (gravação contínua em buffer) economizando GPU e memória sem remover recursos essenciais.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_fullscreen_opt",
+        "titulo": "Desativar Otimizações de Tela Inteira (FSE)",
+        "descricao": "Desativa Fullscreen Optimizations globalmente para reduzir atraso de entrada em jogos DirectX antigos.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_xbox",
+        "titulo": "Desativar Serviços da Xbox em Segundo Plano",
+        "descricao": "Desabilita os serviços XblAuthManager, XblGameSave, XboxGipSvc e XboxNetApiSvc (não use se jogar via Game Pass).",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_hibernacao",
+        "titulo": "Desativar Hibernação (Liberar Espaço em Disco)",
+        "descricao": "Executa powercfg /h off, removendo o arquivo hiberfil.sys e liberando vários GB no disco C:.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_compressao_memoria",
+        "titulo": "Desativar Compressão de Memória RAM",
+        "descricao": "Evita uso de CPU para comprimir memória. Recomendado apenas se o PC tiver 16 GB de RAM ou mais.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_prefetch_superfetch",
+        "titulo": "Desativar Prefetch e Superfetch (SysMain)",
+        "descricao": "Para o serviço SysMain. Útil apenas em HDs mecânicos antigos — em computadores com SSD recomenda-se manter ativado.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": true,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_compatibilidade_forcada",
+        "titulo": "Limpar Modos de Compatibilidade Forçada",
+        "descricao": "Faz backup e limpa entradas antigas em AppCompatFlags\\Layers que forçam programas a rodar em modo antigo.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "debloater_seguro",
+        "titulo": "Debloater Seguro (Remover Apps Supérfluos)",
+        "descricao": "Remove apenas aplicativos promocionais seguros (Notícias, Clima, Paciência, Hub de Comentários, Clipchamp) sem mexer na Loja ou Calculadora.",
+        "categoria": "windows_sistema",
+        "risco": "moderado",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "reiniciar_explorer",
+        "titulo": "Reiniciar Windows Explorer (Barra e Área de Trabalho)",
+        "descricao": "Fecha e reabre o processo explorer.exe com segurança para aplicar mudanças visuais ou destravar a barra de tarefas.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "desativar_isolamento_nucleo",
+        "titulo": "Desativar Isolamento de Núcleo (HVCI)",
+        "descricao": "Desativa a Integridade de Memória baseada em virtualização. Pode ganhar FPS, mas reduz a proteção contra ataques de kernel.",
+        "categoria": "windows_sistema",
+        "risco": "avancado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "desativar_vbs",
+        "titulo": "Desativar Segurança Baseada em Virtualização (VBS)",
+        "descricao": "Desativa VBS no registro para liberar desempenho de jogos/CPU, reduzindo a camada de isolamento de segurança do Windows.",
+        "categoria": "windows_sistema",
+        "risco": "avancado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "limpar_cache_windows",
+        "titulo": "Limpar Arquivos Temporários e Cache DirectX",
+        "descricao": "Remove arquivos temporários antigos em %TEMP%, Windows\\Temp e D3DSCache informando exatamente quantos MB foram liberados.",
+        "categoria": "ram",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "liberar_ram",
+        "titulo": "Liberar Memória RAM em Espera (Working Set)",
+        "descricao": "Enxuga memória ociosa alocada por processos comuns sem encerrar nenhum programa aberto e exibe o ganho na hora.",
+        "categoria": "ram",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "limpar_dns",
+        "titulo": "Limpar Cache de DNS do Windows",
+        "descricao": "Executa ipconfig /flushdns para renovar entradas antigas de nomes e corrigir rotas lentas ou sites fora do ar.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "desativar_economia_rede",
+        "titulo": "Desativar Economia de Energia do Adaptador de Rede",
+        "descricao": "Impede que o Windows reduza a potência ou desligue sua placa Wi-Fi/Ethernet por economia de energia.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_rede_latencia",
+        "titulo": "Desativar Limitação Multimídia de Rede (Throttling)",
+        "descricao": "Remove o limitador padrão NetworkThrottlingIndex do Windows durante jogos e transmissões simultâneas.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "dns_cloudflare",
+        "titulo": "Aplicar DNS Rápido Cloudflare (1.1.1.1)",
+        "descricao": "Configura o DNS IPv4 da Cloudflare (1.1.1.1 / 1.0.0.1) no adaptador de internet principal ativo.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "dns_google",
+        "titulo": "Aplicar DNS Google (8.8.8.8)",
+        "descricao": "Configura o DNS IPv4 do Google (8.8.8.8 / 8.8.4.4) no adaptador de internet principal ativo.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "resetar_rede",
+        "titulo": "Resetar Pilha TCP/IP e Winsock",
+        "descricao": "Redefine Winsock e TCP/IP para corrigir internet instável ou erros de conexão. Requer reiniciar o PC após rodar.",
+        "categoria": "rede",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "desativar_mpo",
+        "titulo": "Desativar MPO (Multi-Plane Overlay)",
+        "descricao": "Corrige telas pretas, cintilação e congelamentos em placas AMD, NVIDIA e Intel desativando OverlayTestMode.",
+        "categoria": "gpu",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "ativar_hags",
+        "titulo": "Ativar Agendamento de GPU Acelerado por Hardware (HAGS)",
+        "descricao": "Habilita HwSchMode=2 para que placas de vídeo compatíveis gerenciem melhor suas filas de memória.",
+        "categoria": "gpu",
+        "risco": "moderado",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_gpu_amd",
+        "titulo": "Otimizar GPU AMD Radeon (Serviços e Cache)",
+        "descricao": "Pausa serviços de relatório de falha da AMD e limpa o cache de shaders AMD\\DxCache sem alterar o driver de vídeo.",
+        "categoria": "gpu",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_gpu_nvidia",
+        "titulo": "Otimizar GPU NVIDIA GeForce (Telemetria e Cache)",
+        "descricao": "Desativa telemetria secundária da NVIDIA (NvTelemetryContainer) e limpa o cache de shaders DXCache.",
+        "categoria": "gpu",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "otimizar_gpu_intel",
+        "titulo": "Otimizar GPU Intel Graphics (Telemetria e Cache)",
+        "descricao": "Reduz processos de telemetria gráfica Intel em segundo plano e limpa caches de shader.",
+        "categoria": "gpu",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "reparar_sfc",
+        "titulo": "Verificar e Reparar Arquivos do Sistema (SFC)",
+        "descricao": "Executa sfc /scannow para localizar e corrigir arquivos protegidos do Windows corrompidos.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "reparar_dism",
+        "titulo": "Reparar Imagem do Windows (DISM RestoreHealth)",
+        "descricao": "Repara a loja de componentes do Windows quando o SFC não consegue consertar arquivos sozinho.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "reparar_windows_update",
+        "titulo": "Corrigir Windows Update Travado",
+        "descricao": "Para os serviços de atualização, limpa downloads presos em SoftwareDistribution\\Download e reinicia tudo.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "reparar_store",
+        "titulo": "Resetar Cache da Microsoft Store",
+        "descricao": "Executa wsreset.exe para destravar downloads parados ou erros na loja oficial do Windows.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "verificar_disco",
+        "titulo": "Verificar Integridade do Disco C: (Somente Leitura)",
+        "descricao": "Executa chkdsk C: em modo seguro de leitura para identificar setores ou erros de sistema de arquivos.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "github_winutil_ultimate_power",
+        "titulo": "[GitHub WinUtil 45k⭐] Ativar Plano Oculto 'Desempenho Máximo'",
+        "descricao": "Desbloqueia e ativa o esquema oculto Ultimate Performance (e9a42b02-d5df-448d-aa00-03f14749eb61) do ChrisTitus WinUtil para eliminar micro-latência de CPU.",
+        "categoria": "windows_energia",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_winutil_explorer_tecnico",
+        "titulo": "[GitHub WinUtil 45k⭐] Explorer Modo Técnico (Extensões e Ocultos)",
+        "descricao": "Mostra extensões reais de arquivos (.exe, .bat, .dll para evitar vírus disfarçados), exibe arquivos ocultos e abre o Explorer direto em 'Este Computador'.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_winutil_update_estavel",
+        "titulo": "[GitHub WinUtil 45k⭐] Windows Update Estável (Sem Reinício Forçado)",
+        "descricao": "Impede que o Windows reinicie sozinho com o usuário logado e bloqueia substituição automática do driver da placa de vídeo pelo Windows Update.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_debloat_copilot_bing_widgets",
+        "titulo": "[GitHub Win11Debloat 18k⭐] Desativar Bing no Iniciar, Copilot e Widgets",
+        "descricao": "Remove a busca web lenta do Bing no Menu Iniciar (deixando a busca local instantânea) e desativa Copilot e Widgets de notícias que consomem RAM.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_debloat_menu_contexto_classico",
+        "titulo": "[GitHub Win11Debloat 18k⭐] Ativar Menu de Clique Direito Clássico Completo",
+        "descricao": "Restaura o menu de clique direito completo no Windows 11 (sem precisar clicar em 'Mostrar mais opções'). Totalmente reversível.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_optimizer_hosts_rede",
+        "titulo": "[GitHub Hellzerg Optimizer 17k⭐] Auditar Arquivo HOSTS e Resetar Winsock",
+        "descricao": "Verifica se malwares alteraram o arquivo C:\\Windows\\System32\\drivers\\etc\\hosts e renova o catálogo de sockets de rede.",
+        "categoria": "rede",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "github_relatorio_bateria_energia",
+        "titulo": "[Diagnóstico Notebook] Gerar Laudo Oficial de Vida Útil da Bateria",
+        "descricao": "Executa powercfg /batteryreport para mostrar a capacidade original de fábrica vs. desgaste atual da bateria em notebooks.",
+        "categoria": "reparo",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": false
+      },
+      {
+        "id": "win10_11_fluidez_interface",
+        "titulo": "[Win 10 & 11 Liso] Zerar Atraso de Menus (0ms) e Desligar Transparência Pesada",
+        "descricao": "Reduz MenuShowDelay de 400ms para 0ms e desativa o efeito de transparência acrílica/Mica que pesa na placa de vídeo ao arrastar janelas.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "win10_desativar_noticias_barra",
+        "titulo": "[Windows 10 Liso] Desativar 'Notícias e Interesses' (Clima Pesado na Barra)",
+        "descricao": "Desliga o painel de Notícias e Clima da barra de tarefas do Windows 10 que mantém o processo WebView2 consumindo até 350 MB de RAM em segundo plano.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "win11_desativar_recall_anuncios",
+        "titulo": "[Windows 11 Liso] Desativar Windows Recall (IA Contínua) e Anúncios do Iniciar",
+        "descricao": "Desativa a captura contínua de tela do Windows Recall (Win 11 24H2) e remove sugestões patrocinadas do Menu Iniciar e das Configurações.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": false,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "win10_11_otimizar_ntfs_disco",
+        "titulo": "[Win 10 & 11 Liso] Reduzir Gravações Desnecessárias no Disco (NTFS LastAccess)",
+        "descricao": "Evita que o Windows grave no SSD/HD a cada simples leitura de arquivo (fsutil behavior set disablelastaccess 1), deixando a abertura de pastas mais rápida.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_crapfixer_telemetria_tarefas",
+        "titulo": "[GitHub CrapFixer 10k⭐] Desativar Tarefas Agendadas de Telemetria (CEIP)",
+        "descricao": "Desabilita as tarefas agendadas ocultas de coleta de uso (Consolidator, UsbCeip, ProgramDataUpdater e Compatibility Appraiser) sem afetar o Windows.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      },
+      {
+        "id": "github_rufus_bypass_win11",
+        "titulo": "[GitHub Rufus 31k⭐] Permitir Windows 11 em PC sem TPM 2.0 / CPU Antiga",
+        "descricao": "Aplica as chaves oficiais de laboratório (BypassTPMCheck, BypassSecureBootCheck, BypassRAMCheck e AllowUpgradesWithUnsupportedTPMOrCPU) para atualizar PCs antigos.",
+        "categoria": "windows_sistema",
+        "risco": "seguro",
+        "requerAdmin": true,
+        "alertaSSD": false,
+        "suportaReverter": true
+      }
+    ]
+  },
+  "assistente": {
+    "ok": true,
+    "receitas": [
+      {
+        "codigo": "sintoma_pc_lento",
+        "titulo": "PC Lento, Pesado ou Demorando para Abrir Programas",
+        "palavrasChave": [
+          "lento",
+          "travando",
+          "pesado",
+          "demorando",
+          "devagar",
+          "ram",
+          "memoria",
+          "engasgo"
+        ],
+        "oQueFaz": "Limpa arquivos temporários acumulados, libera memória RAM ociosa, restringe aplicativos da Loja em segundo plano e aplica ajuste visual de resposta rápida.",
+        "requerAdmin": false
+      },
+      {
+        "codigo": "sintoma_boot_demorado",
+        "titulo": "Windows Demorando para Ligar ou Desligar",
+        "palavrasChave": [
+          "ligar",
+          "boot",
+          "iniciar",
+          "inicializacao",
+          "desligar",
+          "reiniciando",
+          "lento ao ligar"
+        ],
+        "oQueFaz": "Desativa a Inicialização Rápida (Hiberboot) quando Admin para zerar o núcleo, desativa atualizadores pesados na inicialização do usuário (com backup seguro) e limpa o Prefetch antigo.",
+        "requerAdmin": false
+      },
+      {
+        "codigo": "sintoma_explorer_travando",
+        "titulo": "Barra de Tarefas, Menu Iniciar ou Pastas Travando (Explorer)",
+        "palavrasChave": [
+          "barra",
+          "iniciar",
+          "pasta",
+          "explorer",
+          "congelando",
+          "janela",
+          "icone",
+          "nao responde"
+        ],
+        "oQueFaz": "Remove caches corrompidos de ícones e miniaturas, limpa temporários de interface e reinicia o Windows Explorer (explorer.exe) de forma limpa.",
+        "requerAdmin": false
+      },
+      {
+        "codigo": "sintoma_internet_ping",
+        "titulo": "Internet Lenta, Sites Não Abrem ou Ping Alto em Jogos",
+        "palavrasChave": [
+          "internet",
+          "rede",
+          "wifi",
+          "ping",
+          "dns",
+          "lag",
+          "conexao",
+          "site",
+          "youtube"
+        ],
+        "oQueFaz": "Renova o cache DNS (ipconfig /flushdns), mede os servidores Cloudflare/Google/Quad9 em tempo real e reduz a limitação de pacotes de rede (NetworkThrottlingIndex).",
+        "requerAdmin": false
+      },
+      {
+        "codigo": "sintoma_video_jogos",
+        "titulo": "Queda de FPS, Tela Piscando ou Vídeo Engasgando",
+        "palavrasChave": [
+          "jogo",
+          "fps",
+          "video",
+          "tela",
+          "gpu",
+          "placa",
+          "engasgando",
+          "stuttering",
+          "ffmpeg",
+          "piscando"
+        ],
+        "oQueFaz": "Limpa o cache de Shaders DirectX (D3DSCache), desativa a gravação Game DVR em segundo plano e desativa o MPO (Sobreposição Multiplano) quando em modo Administrador.",
+        "requerAdmin": false
+      },
+      {
+        "codigo": "sintoma_usb_audio_update",
+        "titulo": "Erro de Windows Update, Som Sumiu ou USB Falhando",
+        "palavrasChave": [
+          "update",
+          "atualizacao",
+          "som",
+          "audio",
+          "usb",
+          "pendrive",
+          "impressora",
+          "dcom",
+          "erro",
+          "driver"
+        ],
+        "oQueFaz": "Reescaneia dispositivos Plug and Play no Windows, reinicia serviços de áudio/update (quando Admin) e limpa caches corrompidos de atualização.",
+        "requerAdmin": true
+      }
+    ]
+  },
+  "isoTools": {
+    "ferramentas": [
+      {
+        "id": "win11_mct",
+        "nome": "Criador de Mídia Oficial Windows 11 (Microsoft)",
+        "arquivo": "MediaCreationTool_Win11.exe",
+        "url": "https://go.microsoft.com/fwlink/?linkid=2156295",
+        "descricao": "Ferramenta oficial da Microsoft para baixar a ISO do Windows 11 ou gravar direto no PenDrive inicializável.",
+        "baixado": false,
+        "tamanhoMB": 0
+      },
+      {
+        "id": "win10_mct",
+        "nome": "Criador de Mídia Oficial Windows 10 (Microsoft)",
+        "arquivo": "MediaCreationTool_Win10.exe",
+        "url": "https://go.microsoft.com/fwlink/?LinkId=2265055",
+        "descricao": "Ferramenta oficial da Microsoft para baixar a ISO do Windows 10 22H2 ou criar o PenDrive de instalação.",
+        "baixado": false,
+        "tamanhoMB": 0
+      },
+      {
+        "id": "win11_assistente",
+        "nome": "Assistente de Instalação Windows 11 (Microsoft)",
+        "arquivo": "Windows11InstallationAssistant.exe",
+        "url": "https://go.microsoft.com/fwlink/?linkid=2171764",
+        "descricao": "Atualiza ou reinstala o Windows 11 rapidamente mantendo programas compatíveis na própria máquina.",
+        "baixado": false,
+        "tamanhoMB": 0
+      },
+      {
+        "id": "rufus_portatil",
+        "nome": "Rufus 4.6 Portátil (Baixar ISOs e Gravar PenDrive)",
+        "arquivo": "rufus-4.6p.exe",
+        "url": "https://github.com/pbatard/rufus/releases/download/v4.6/rufus-4.6p.exe",
+        "descricao": "Grava ISOs no PenDrive muito rápido, baixa ISOs oficiais do Windows 10/11 e permite pular exigência de TPM e conta Microsoft.",
+        "baixado": false,
+        "tamanhoMB": 0
+      },
+      {
+        "id": "hellzerg_optimizer",
+        "nome": "Hellzerg Optimizer 16.7 Portátil (GitHub 17k⭐)",
+        "arquivo": "Optimizer-16.7.exe",
+        "url": "https://github.com/hellzerg/optimizer/releases/download/16.7/Optimizer-16.7.exe",
+        "descricao": "Utilitário portátil famoso do GitHub para privacidade, limpeza de UWP, edição de HOSTS, reparo de Registro e diagnóstico.",
+        "baixado": false,
+        "tamanhoMB": 0
+      },
+      {
+        "id": "win11debloat_zip",
+        "nome": "Raphire Win11Debloat Oficial (GitHub 18k⭐)",
+        "arquivo": "Win11Debloat-master.zip",
+        "url": "https://github.com/Raphire/Win11Debloat/archive/refs/heads/master.zip",
+        "descricao": "Pacote oficial do GitHub para remover bloatwares pré-instalados e limpar a interface do Windows 10 e Windows 11.",
+        "baixado": false,
+        "tamanhoMB": 0
+      }
+    ],
+    "kitNinite": [
+      {
+        "id": "Google.Chrome",
+        "nome": "Google Chrome",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Navegador principal mais pedido por clientes após formatação.",
+        "recomendado": true
+      },
+      {
+        "id": "Brave.Brave",
+        "nome": "Brave Browser",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Navegador rápido com bloqueador de anúncios integrado.",
+        "recomendado": false
+      },
+      {
+        "id": "7zip.7zip",
+        "nome": "7-Zip",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Compactador e descompactador leve (.zip, .rar, .7z).",
+        "recomendado": true
+      },
+      {
+        "id": "RARLab.WinRAR",
+        "nome": "WinRAR",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Clássico gerenciador de arquivos compactados.",
+        "recomendado": false
+      },
+      {
+        "id": "VideoLAN.VLC",
+        "nome": "VLC Media Player",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Reprodutor universal de vídeo e áudio com todos os codecs.",
+        "recomendado": true
+      },
+      {
+        "id": "SumatraPDF.SumatraPDF",
+        "nome": "SumatraPDF",
+        "categoria": "Essenciais (Estilo Ninite)",
+        "descricao": "Leitor de PDF ultraleve e instantâneo.",
+        "recomendado": true
+      },
+      {
+        "id": "Microsoft.VCRedist.2015+.x64",
+        "nome": "Visual C++ 2015-2022 (64-bit)",
+        "categoria": "Runtimes Obrigatórios",
+        "descricao": "Evita erros de MSVCP140.dll e VCRUNTIME140.dll em programas e jogos.",
+        "recomendado": true
+      },
+      {
+        "id": "Microsoft.VCRedist.2015+.x86",
+        "nome": "Visual C++ 2015-2022 (32-bit)",
+        "categoria": "Runtimes Obrigatórios",
+        "descricao": "Biblioteca C++ 32-bit exigida por jogos e utilitários antigos.",
+        "recomendado": true
+      },
+      {
+        "id": "Microsoft.DotNet.DesktopRuntime.8",
+        "nome": ".NET Desktop Runtime 8",
+        "categoria": "Runtimes Obrigatórios",
+        "descricao": "Base oficial da Microsoft para aplicativos modernos de desktop.",
+        "recomendado": true
+      },
+      {
+        "id": "CrystalDewWorld.CrystalDiskInfo",
+        "nome": "CrystalDiskInfo",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Verifica a saúde S.M.A.R.T., vida útil (%) e temperatura de SSDs e HDs.",
+        "recomendado": true
+      },
+      {
+        "id": "CPUID.CPU-Z",
+        "nome": "CPU-Z",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Inspeção exata de processador, placa-mãe, chipset e latência de RAM.",
+        "recomendado": true
+      },
+      {
+        "id": "CPUID.HWMonitor",
+        "nome": "HWMonitor",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Monitora temperaturas, tensões da fonte e rotações de ventoinhas.",
+        "recomendado": true
+      },
+      {
+        "id": "voidtools.Everything",
+        "nome": "Everything Search",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Encontra qualquer arquivo no Windows em menos de 1 segundo.",
+        "recomendado": true
+      },
+      {
+        "id": "Ventoy.Ventoy",
+        "nome": "Ventoy (PenDrive Multi-ISO — GitHub 63k⭐)",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Transforma o PenDrive em multi-boot: basta copiar várias ISOs (Win 10, Win 11, Linux) lá dentro.",
+        "recomendado": false
+      },
+      {
+        "id": "Microsoft.PowerToys",
+        "nome": "Microsoft PowerToys (GitHub 110k⭐)",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Suite oficial open-source da Microsoft no GitHub com desbloqueador de arquivos travados, OCR de tela e gerenciador de janelas.",
+        "recomendado": true
+      },
+      {
+        "id": "BleachBit.BleachBit",
+        "nome": "BleachBit (Limpeza Open-Source GitHub)",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Limpador profundo de código aberto (substituto leve e gratuito do CCleaner sem propagandas).",
+        "recomendado": true
+      },
+      {
+        "id": "WinsiderSS.SystemInformer",
+        "nome": "System Informer (Process Hacker — GitHub 14k⭐)",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Monitor avançado de processos, serviços, rede e memória RAM de código aberto.",
+        "recomendado": true
+      },
+      {
+        "id": "Malwarebytes.Malwarebytes",
+        "nome": "Malwarebytes",
+        "categoria": "Diagnóstico de Técnicos",
+        "descricao": "Scanner técnico para remoção de malwares, adwares e programas indesejados.",
+        "recomendado": false
+      },
+      {
+        "id": "AnyDeskSoftwareGmbH.AnyDesk",
+        "nome": "AnyDesk",
+        "categoria": "Suporte Remoto",
+        "descricao": "Acesso remoto rápido para prestar suporte à distância ao cliente.",
+        "recomendado": true
+      },
+      {
+        "id": "RustDesk.RustDesk",
+        "nome": "RustDesk",
+        "categoria": "Suporte Remoto",
+        "descricao": "Alternativa gratuita e de código aberto para suporte remoto.",
+        "recomendado": false
+      },
+      {
+        "id": "Discord.Discord",
+        "nome": "Discord",
+        "categoria": "Comunicação e Jogos",
+        "descricao": "Comunicação por voz, vídeo e comunidades.",
+        "recomendado": false
+      },
+      {
+        "id": "Valve.Steam",
+        "nome": "Steam",
+        "categoria": "Comunicação e Jogos",
+        "descricao": "Plataforma principal de jogos para PC.",
+        "recomendado": false
+      }
+    ]
+  },
+  "drivers": {
+    "drivers": [
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Audio Endpoint",
+        "classe": "AudioEndpoint",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "audioendpoint.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "Disk drive",
+        "classe": "DiskDrive",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4597",
+        "data": "6-21-2006",
+        "inf": "disk.inf"
+      },
+      {
+        "dispositivo": "AMD Radeon HD 5450",
+        "classe": "Display",
+        "fabricante": "Advanced Micro Devices, Inc.",
+        "versao": "15.201.2401.0",
+        "data": "11-4-2015",
+        "inf": "oem14.inf"
+      },
+      {
+        "dispositivo": "USB Input Device",
+        "classe": "HIDClass",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "input.inf"
+      },
+      {
+        "dispositivo": "USB Input Device",
+        "classe": "HIDClass",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "input.inf"
+      },
+      {
+        "dispositivo": "USB Input Device",
+        "classe": "HIDClass",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "input.inf"
+      },
+      {
+        "dispositivo": "USB Input Device",
+        "classe": "HIDClass",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "input.inf"
+      },
+      {
+        "dispositivo": "AMD High Definition Audio Device",
+        "classe": "MEDIA",
+        "fabricante": "Advanced Micro Devices",
+        "versao": "10.0.0.3",
+        "data": "4-13-2016",
+        "inf": "oem15.inf"
+      },
+      {
+        "dispositivo": "High Definition Audio Device",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "10-19-2023",
+        "inf": "hdaudio.inf"
+      },
+      {
+        "dispositivo": "Microsoft Streaming Clock Proxy",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ksfilter.inf"
+      },
+      {
+        "dispositivo": "Microsoft Streaming Quality Manager Proxy",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ksfilter.inf"
+      },
+      {
+        "dispositivo": "Microsoft Streaming Service Proxy",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ksfilter.inf"
+      },
+      {
+        "dispositivo": "Microsoft Streaming Tee/Sink-to-Sink Converter",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ksfilter.inf"
+      },
+      {
+        "dispositivo": "Microsoft Streaming Tee/Sink-to-Sink Converter",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ksfilter.inf"
+      },
+      {
+        "dispositivo": "Microsoft Trusted Audio Drivers",
+        "classe": "MEDIA",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.5072",
+        "data": "10-11-2024",
+        "inf": "wdmaudio.inf"
+      },
+      {
+        "dispositivo": "Hyper-V Virtual Ethernet Adapter",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "wvms_mp_windows.inf"
+      },
+      {
+        "dispositivo": "Hyper-V Virtual Switch Extension Adapter",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "wvms_mp_windows.inf"
+      },
+      {
+        "dispositivo": "Intel(R) Ethernet Connection I217-LM",
+        "classe": "Net",
+        "fabricante": "Intel",
+        "versao": "12.19.2.69",
+        "data": "6-29-2026",
+        "inf": "oem20.inf"
+      },
+      {
+        "dispositivo": "Microsoft Kernel Debug Network Adapter",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "kdnic.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (IKEv2)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netavpna.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (IP)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (IPv6)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (L2TP)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (Network Monitor)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (PPPOE)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (PPTP)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netrasa.inf"
+      },
+      {
+        "dispositivo": "WAN Miniport (SSTP)",
+        "classe": "Net",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "netsstpa.inf"
+      },
+      {
+        "dispositivo": "Intel(R) C220 series chipset SATA AHCI Controller",
+        "classe": "SCSIAdapter",
+        "fabricante": "Intel Corporation",
+        "versao": "6.2.0.1238",
+        "data": "9-18-2019",
+        "inf": "oem18.inf"
+      },
+      {
+        "dispositivo": "Microsoft Storage Spaces Controller",
+        "classe": "SCSIAdapter",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "spaceport.inf"
+      },
+      {
+        "dispositivo": "Microsoft VHD Loopback Controller",
+        "classe": "SCSIAdapter",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6328",
+        "data": "6-21-2006",
+        "inf": "vhdmp.inf"
+      },
+      {
+        "dispositivo": "ACPI Fan",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Fan",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Fan",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Fan",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Fan",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Fixed Feature Button",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Power Button",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Thermal Zone",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ACPI Thermal Zone",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Application interface driver",
+        "classe": "System",
+        "fabricante": "Lenovo",
+        "versao": "1.0.0.12",
+        "data": "11-13-2017",
+        "inf": "oem8.inf"
+      },
+      {
+        "dispositivo": "Composite Bus Enumerator",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "compositebus.inf"
+      },
+      {
+        "dispositivo": "Direct memory access controller",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "ELAN SMBus Driver",
+        "classe": "System",
+        "fabricante": "ELAN SMBus",
+        "versao": "24.21.53.3",
+        "data": "6-10-2026",
+        "inf": "oem19.inf"
+      },
+      {
+        "dispositivo": "High Definition Audio Controller",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6157",
+        "data": "7-7-2025",
+        "inf": "hdaudbus.inf"
+      },
+      {
+        "dispositivo": "High Definition Audio Controller",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6157",
+        "data": "7-7-2025",
+        "inf": "hdaudbus.inf"
+      },
+      {
+        "dispositivo": "High precision event timer",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Intel(R) 8 Series/C220 Series PCI Express Root Port #1 - 8C10",
+        "classe": "System",
+        "fabricante": "INTEL",
+        "versao": "10.1.1.45",
+        "data": "1-2-2018",
+        "inf": "oem10.inf"
+      },
+      {
+        "dispositivo": "Intel(R) 8 Series/C220 Series PCI Express Root Port #4 - 8C16",
+        "classe": "System",
+        "fabricante": "INTEL",
+        "versao": "10.1.1.45",
+        "data": "1-2-2018",
+        "inf": "oem10.inf"
+      },
+      {
+        "dispositivo": "Intel(R) Management Engine Interface ",
+        "classe": "System",
+        "fabricante": "Intel",
+        "versao": "11.7.0.1057",
+        "data": "4-3-2018",
+        "inf": "oem17.inf"
+      },
+      {
+        "dispositivo": "Intel(R) Q87 LPC Controller - 8C4E",
+        "classe": "System",
+        "fabricante": "INTEL",
+        "versao": "10.1.1.45",
+        "data": "1-2-2018",
+        "inf": "oem10.inf"
+      },
+      {
+        "dispositivo": "Intel(R) Xeon(R) processor E3 - 1200 v3/4th Gen Core processor DRAM Controller - 0C00",
+        "classe": "System",
+        "fabricante": "INTEL",
+        "versao": "10.1.1.45",
+        "data": "1-2-2018",
+        "inf": "oem9.inf"
+      },
+      {
+        "dispositivo": "Intel(R) Xeon(R) processor E3 - 1200 v3/4th Gen Core processor PCI Express x16 Controller - 0C01",
+        "classe": "System",
+        "fabricante": "INTEL",
+        "versao": "10.1.1.45",
+        "data": "1-2-2018",
+        "inf": "oem9.inf"
+      },
+      {
+        "dispositivo": "Legacy device",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Microsoft ACPI-Compliant System",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "acpi.inf"
+      },
+      {
+        "dispositivo": "Microsoft Basic Display Driver",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "basicdisplay.inf"
+      },
+      {
+        "dispositivo": "Microsoft Basic Render Driver",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6216",
+        "data": "6-21-2006",
+        "inf": "basicrender.inf"
+      },
+      {
+        "dispositivo": "Microsoft Hyper-V PCI Server",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "wvpcivsp.inf"
+      },
+      {
+        "dispositivo": "Microsoft Hyper-V Virtual Disk Server",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6093",
+        "data": "6-21-2006",
+        "inf": "wstorvsp.inf"
+      },
+      {
+        "dispositivo": "Microsoft Hyper-V Virtual Machine Bus Provider",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6093",
+        "data": "6-21-2006",
+        "inf": "wvmbusr.inf"
+      },
+      {
+        "dispositivo": "Microsoft Hyper-V Virtualization Infrastructure Driver",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.5794",
+        "data": "6-21-2006",
+        "inf": "wvid.inf"
+      },
+      {
+        "dispositivo": "Microsoft RemoteFX Synth3D VSP Driver",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "wsynth3dvsp.inf"
+      },
+      {
+        "dispositivo": "Microsoft System Management BIOS Driver",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "mssmbios.inf"
+      },
+      {
+        "dispositivo": "Microsoft UEFI-Compliant System",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "uefi.inf"
+      },
+      {
+        "dispositivo": "Microsoft Virtual Drive Enumerator",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "vdrvroot.inf"
+      },
+      {
+        "dispositivo": "Microsoft Windows Management Interface for ACPI",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "wmiacpi.inf"
+      },
+      {
+        "dispositivo": "Motherboard resources",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Motherboard resources",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Motherboard resources",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Motherboard resources",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Motherboard resources",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "NDIS Virtual Network Adapter Enumerator",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "ndisvirtualbus.inf"
+      },
+      {
+        "dispositivo": "Numeric data processor",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "PCI Express Root Complex",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "pci.inf"
+      },
+      {
+        "dispositivo": "PCI-to-PCI Bridge",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "pci.inf"
+      },
+      {
+        "dispositivo": "Plug and Play Software Device Enumerator",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "12-6-2019",
+        "inf": "swenum.inf"
+      },
+      {
+        "dispositivo": "Programmable interrupt controller",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "Remote Desktop Device Redirector Bus",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "rdpbus.inf"
+      },
+      {
+        "dispositivo": "System CMOS/real time clock",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "System timer",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "machine.inf"
+      },
+      {
+        "dispositivo": "UMBus Root Bus Enumerator",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.1",
+        "data": "6-21-2006",
+        "inf": "umbus.inf"
+      },
+      {
+        "dispositivo": "Volume Manager",
+        "classe": "System",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.3636",
+        "data": "6-21-2006",
+        "inf": "volmgr.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "10-10-2025",
+        "inf": "usbhub3.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "usb.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "10-10-2025",
+        "inf": "usbhub3.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "10-10-2025",
+        "inf": "usbhub3.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "10-10-2025",
+        "inf": "usbhub3.inf"
+      },
+      {
+        "dispositivo": "Generic USB Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "usb.inf"
+      },
+      {
+        "dispositivo": "Intel(R) 8 Series/C220 Series USB EHCI #1 - 8C26",
+        "classe": "USB",
+        "fabricante": "Intel",
+        "versao": "9.4.0.1025",
+        "data": "7-31-2013",
+        "inf": "oem13.inf"
+      },
+      {
+        "dispositivo": "Intel(R) 8 Series/C220 Series USB EHCI #2 - 8C2D",
+        "classe": "USB",
+        "fabricante": "Intel",
+        "versao": "9.4.0.1025",
+        "data": "7-31-2013",
+        "inf": "oem13.inf"
+      },
+      {
+        "dispositivo": "Unknown USB Device (Device Descriptor Request Failed)",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "usb.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Mass Storage Device",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.4355",
+        "data": "6-21-2006",
+        "inf": "usbstor.inf"
+      },
+      {
+        "dispositivo": "USB Root Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "usbport.inf"
+      },
+      {
+        "dispositivo": "USB Root Hub",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "6-21-2006",
+        "inf": "usbport.inf"
+      },
+      {
+        "dispositivo": "USB Root Hub (USB 3.0)",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.6456",
+        "data": "10-10-2025",
+        "inf": "usbhub3.inf"
+      },
+      {
+        "dispositivo": "USB xHCI Compliant Host Controller",
+        "classe": "USB",
+        "fabricante": "Microsoft",
+        "versao": "10.0.19041.5794",
+        "data": "4-7-2025",
+        "inf": "usbxhci.inf"
+      }
+    ],
+    "dispositivosComErro": [],
+    "backupsExistentes": [
+      {
+        "nomePasta": "drivers_DESKTOP-QP22547_20261120_154236",
+        "caminho": "F:\\WindowsBoostPro\\backups\\drivers_DESKTOP-QP22547_20261120_154236",
+        "totalInf": 45,
+        "totalBinarios": 165,
+        "tamanhoMB": 400.34,
+        "temScriptRestauracao": true,
+        "prontoParaFormatar": true,
+        "amostraInfs": [
+          "ACER_S271HL.inf",
+          "AtihdWT6.inf",
+          "basicrender.inf",
+          "bth.inf",
+          "bthpan.inf",
+          "C0296375.inf",
+          "e1d.inf",
+          "ETDSMBus.inf"
+        ],
+        "criadoEm": "2026-11-20T18:42:40.144Z",
+        "criadoFormatado": "20/11/2026, 15:42:40"
+      }
+    ]
+  },
+  "jogos": {
+    "jogos": [
+      {
+        "nome": "Valorant",
+        "executavel": "VALORANT-Win64-Shipping.exe",
+        "genero": "FPS Tático",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Counter-Strike 2 (CS2)",
+        "executavel": "cs2.exe",
+        "genero": "FPS Competitivo",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Fortnite",
+        "executavel": "FortniteClient-Win64-Shipping.exe",
+        "genero": "Battle Royale",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Grand Theft Auto V (GTA V)",
+        "executavel": "GTA5.exe",
+        "genero": "Mundo Aberto",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "FiveM",
+        "executavel": "FiveM.exe",
+        "genero": "RP / Multiplayer",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Call of Duty: Warzone",
+        "executavel": "cod.exe",
+        "genero": "Battle Royale",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Apex Legends",
+        "executavel": "r5apex.exe",
+        "genero": "Battle Royale",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "League of Legends",
+        "executavel": "League of Legends.exe",
+        "genero": "MOBA",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Minecraft (Java)",
+        "executavel": "javaw.exe",
+        "genero": "Sandbox",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Minecraft (Bedrock)",
+        "executavel": "Minecraft.Windows.exe",
+        "genero": "Sandbox",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Roblox",
+        "executavel": "RobloxPlayerBeta.exe",
+        "genero": "Plataforma",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "BlueStacks (Free Fire)",
+        "executavel": "HD-Player.exe",
+        "genero": "Emulador",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Cyberpunk 2077",
+        "executavel": "Cyberpunk2077.exe",
+        "genero": "RPG Ação",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Red Dead Redemption 2",
+        "executavel": "RDR2.exe",
+        "genero": "Mundo Aberto",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Elden Ring",
+        "executavel": "eldenring.exe",
+        "genero": "Soulslike",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "EA Sports FC 25",
+        "executavel": "FC25.exe",
+        "genero": "Esportes",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Rocket League",
+        "executavel": "RocketLeague.exe",
+        "genero": "Esportes",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Rainbow Six Siege",
+        "executavel": "RainbowSix.exe",
+        "genero": "FPS Tático",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "PUBG: Battlegrounds",
+        "executavel": "TslGame.exe",
+        "genero": "Battle Royale",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Dota 2",
+        "executavel": "dota2.exe",
+        "genero": "MOBA",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Rust",
+        "executavel": "RustClient.exe",
+        "genero": "Sobrevivência",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "DayZ",
+        "executavel": "DayZ_x64.exe",
+        "genero": "Sobrevivência",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Escape from Tarkov",
+        "executavel": "EscapeFromTarkov.exe",
+        "genero": "FPS Extração",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Genshin Impact",
+        "executavel": "GenshinImpact.exe",
+        "genero": "RPG Ação",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Overwatch 2",
+        "executavel": "Overwatch.exe",
+        "genero": "Hero Shooter",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Marvel Rivals",
+        "executavel": "Marvel-Win64-Shipping.exe",
+        "genero": "Hero Shooter",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Path of Exile 2",
+        "executavel": "PathOfExile.exe",
+        "genero": "ARPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Helldivers 2",
+        "executavel": "helldivers2.exe",
+        "genero": "Co-op",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Dead by Daylight",
+        "executavel": "DeadByDaylight-Win64-Shipping.exe",
+        "genero": "Assimetrico",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Left 4 Dead 2",
+        "executavel": "left4dead2.exe",
+        "genero": "Co-op",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Terraria",
+        "executavel": "Terraria.exe",
+        "genero": "Sandbox",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Stardew Valley",
+        "executavel": "Stardew Valley.exe",
+        "genero": "Simulação",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "World of Warcraft",
+        "executavel": "Wow.exe",
+        "genero": "MMORPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Sea of Thieves",
+        "executavel": "SoTGame.exe",
+        "genero": "Aventura",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Forza Horizon 5",
+        "executavel": "ForzaHorizon5.exe",
+        "genero": "Corrida",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Assetto Corsa",
+        "executavel": "acs.exe",
+        "genero": "Simulador Corrida",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Euro Truck Simulator 2",
+        "executavel": "eurotrucks2.exe",
+        "genero": "Simulador",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "BeamNG.drive",
+        "executavel": "BeamNG.drive.x64.exe",
+        "genero": "Física / Corrida",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "The Witcher 3",
+        "executavel": "witcher3.exe",
+        "genero": "RPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "The Elder Scrolls V: Skyrim",
+        "executavel": "SkyrimSE.exe",
+        "genero": "RPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Fallout 4",
+        "executavel": "Fallout4.exe",
+        "genero": "RPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Baldur's Gate 3",
+        "executavel": "bg3.exe",
+        "genero": "RPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Palworld",
+        "executavel": "Palworld-Win64-Shipping.exe",
+        "genero": "Sobrevivência",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Among Us",
+        "executavel": "Among Us.exe",
+        "genero": "Festa / Dedutivo",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Fall Guys",
+        "executavel": "FallGuys_client_game.exe",
+        "genero": "Plataforma",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Stumble Guys",
+        "executavel": "Stumble Guys.exe",
+        "genero": "Plataforma",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Brawlhalla",
+        "executavel": "Brawlhalla.exe",
+        "genero": "Luta",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Need for Speed Heat",
+        "executavel": "NeedForSpeedHeat.exe",
+        "genero": "Corrida",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Battlefield 2042",
+        "executavel": "BF2042.exe",
+        "genero": "FPS",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Halo Infinite",
+        "executavel": "HaloInfinite.exe",
+        "genero": "FPS",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Destiny 2",
+        "executavel": "destiny2.exe",
+        "genero": "FPS / MMO",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Warframe",
+        "executavel": "Warframe.x64.exe",
+        "genero": "Ação Co-op",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Honkai: Star Rail",
+        "executavel": "StarRail.exe",
+        "genero": "RPG",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Wuthering Waves",
+        "executavel": "Client-Win64-Shipping.exe",
+        "genero": "RPG Ação",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Lethal Company",
+        "executavel": "Lethal Company.exe",
+        "genero": "Co-op Terror",
+        "prioridadeAlta": false
+      },
+      {
+        "nome": "Tibia",
+        "executavel": "client.exe",
+        "genero": "MMORPG",
+        "prioridadeAlta": false
+      }
+    ]
+  },
+  "startup": {
+    "itens": [
+      {
+        "nome": "OneDrive",
+        "escopo": "Usuario",
+        "comando": "OneDrive.exe /background",
+        "ativo": true
+      },
+      {
+        "nome": "Steam",
+        "escopo": "Usuario",
+        "comando": "steam.exe -silent",
+        "ativo": false
+      },
+      {
+        "nome": "SecurityHealth",
+        "escopo": "Sistema",
+        "comando": "SecurityHealthSystray.exe",
+        "ativo": true
+      }
+    ]
+  },
+  "ping": {
+    "alvos": [
+      {
+        "nome": "Cloudflare DNS",
+        "ip": "1.1.1.1",
+        "ms": 11,
+        "online": true
+      },
+      {
+        "nome": "Google DNS",
+        "ip": "8.8.8.8",
+        "ms": 18,
+        "online": true
+      },
+      {
+        "nome": "Quad9 DNS",
+        "ip": "9.9.9.9",
+        "ms": 24,
+        "online": true
+      }
+    ],
+    "melhor": {
+      "nome": "Cloudflare DNS",
+      "ip": "1.1.1.1",
+      "ms": 11,
+      "online": true
+    }
+  },
+  "logs": {
+    "logs": [
+      {
+        "dataHora": "2026-11-20T17:05:45.615Z",
+        "titulo": "Auto-Resolução do PC",
+        "modo": "assistente",
+        "ok": true,
+        "resumo": "155 itens temporários removidos e memória RAM ociosa liberada."
+      }
+    ]
+  },
+  "novosRecursos": {
+    "ok": true,
+    "processosPesados": [
+      {
+        "pid": 4120,
+        "nome": "chrome",
+        "ramMB": 620.4
+      },
+      {
+        "pid": 5812,
+        "nome": "Code",
+        "ramMB": 410.2
+      },
+      {
+        "pid": 3310,
+        "nome": "Discord",
+        "ramMB": 285
+      }
+    ],
+    "atualizacoesWinget": [
+      "7-Zip | 7zip.7zip | 23.01 -> 24.08",
+      "VLC Media Player | VideoLAN.VLC | 3.0.20 -> 3.0.21",
+      "Microsoft Visual C++ 2015-2022 Redistributable (x64) | 14.40 -> 14.42"
+    ]
+  },
+  "diagnostico": {
+    "nomeMd": "Relatorio_Demonstracao_Mobile.md",
+    "nomeHtml": "",
+    "arquivoMd": "relatorios/Relatorio_Demonstracao_Mobile.md",
+    "dados": {
+      "geradoEm": "2026-11-20T17:05:45.616Z",
+      "notaSaude": 92,
+      "classificacao": "Excelente",
+      "hardware": {
+        "hostname": "BANCADA-WINDOWS-PRO",
+        "sistema": "Windows 10/11 Pro (x64)",
+        "cpuModelo": "Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz",
+        "cpuNucleos": 8,
+        "ramTotalGB": 16,
+        "ramUsadaGB": 7.4,
+        "ramLivreGB": 8.6,
+        "ramPercentual": 46,
+        "uptimeFormatado": "3h 40min",
+        "ehAdmin": true,
+        "marcaGpu": "AMD",
+        "temSSD": true,
+        "temperaturaCpuC": 29.9,
+        "gpus": [
+          {
+            "nome": "AMD Radeon HD 5450",
+            "driver": "15.201.2401.0",
+            "vramMB": 1024
+          }
+        ],
+        "discos": [
+          {
+            "nome": "SATA SSD 240GB (Sistema)",
+            "tipo": "SSD",
+            "barramento": "SATA",
+            "tamanhoGB": 240,
+            "saude": "Saudável (100%)",
+            "statusOp": "OK",
+            "temperaturaC": 31
+          },
+          {
+            "nome": "SATA SSD 240GB (Dados)",
+            "tipo": "SSD",
+            "barramento": "SATA",
+            "tamanhoGB": 240,
+            "saude": "Saudável (100%)",
+            "statusOp": "OK",
+            "temperaturaC": 30
+          }
+        ]
+      },
+      "placaMae": {
+        "fabricante": "LENOVO",
+        "modelo": "SHARKBAY"
+      },
+      "bios": {
+        "versao": "FBKT96AUS",
+        "data": "2014-08-10"
+      },
+      "sistemaDetalhe": {
+        "edicao": "Microsoft Windows 10 Pro",
+        "build": "19045",
+        "arquitetura": "64-bit"
+      },
+      "licencaWindows": {
+        "chaveOemBios": "XXXXX-XXXXX-XXXXX-XXXXX-OEM26 (Protegida na Demo Web)",
+        "chaveRegistro": "XXXXX-XXXXX-XXXXX-XXXXX-3V66T",
+        "possuiChaveFisicaBios": true
+      },
+      "volumes": [
+        {
+          "letra": "C",
+          "rotulo": "Sistema",
+          "tamanhoGB": 222.3,
+          "livreGB": 112.4,
+          "percentualLivre": 51
+        },
+        {
+          "letra": "D",
+          "rotulo": "Dados",
+          "tamanhoGB": 223.5,
+          "livreGB": 220.1,
+          "percentualLivre": 98
+        }
+      ],
+      "pentesRam": [
+        {
+          "slot": "DIMM 1",
+          "capacidadeGB": 8,
+          "velocidadeMHz": 1600
+        },
+        {
+          "slot": "DIMM 2",
+          "capacidadeGB": 8,
+          "velocidadeMHz": 1600
+        }
+      ],
+      "topProcessosRam": [
+        {
+          "nome": "chrome",
+          "ramMB": 620.4
+        },
+        {
+          "nome": "Code",
+          "ramMB": 410.2
+        }
+      ],
+      "cicloSistema": {
+        "dataInstalacao": "03/11/2026 21:52:11",
+        "diasDesdeInstalacao": 16,
+        "ultimoBoot": "20/11/2026 08:55:49",
+        "uptimeFormatado": "3h 40min",
+        "horasLigado": 3.6,
+        "hiberbootAtivo": true,
+        "minidumpsCount": 0,
+        "riscosTempoLigado": [
+          {
+            "titulo": "Vazamento de Memória RAM (Memory Leak)",
+            "descricao": "Processos e drivers acumulam memória não liberada (pool paginado e não paginado), deixando o PC lento mesmo com poucas abas abertas."
+          },
+          {
+            "titulo": "Travamento do Windows Explorer (explorer.exe)",
+            "descricao": "A barra de tarefas, o Menu Iniciar e as janelas de pastas começam a congelar ou reiniciar sozinhos (erro Application Hang ID 1002)."
+          },
+          {
+            "titulo": "Engasgos de Vídeo e Áudio",
+            "descricao": "Os buffers dos drivers de vídeo e som saturam após muitas horas contínuas, provocando quedas de FPS e pequenos chiados."
+          },
+          {
+            "titulo": "Falhas em Atualizações e Componentes (DCOM / Update)",
+            "descricao": "Atualizações pendentes ficam presas aguardando reinício completo do kernel, gerando falhas DCOM (como ID 10001) e lentidão."
+          },
+          {
+            "titulo": "Instabilidade de Rede e Portas USB",
+            "descricao": "Tabelas de rede e controladores USB podem perder resposta até que um reinício real (clicar em Reiniciar, não apenas Desligar) seja feito."
+          }
+        ]
+      },
+      "driversInfo": {
+        "drivers": [
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Audio Endpoint",
+            "classe": "AudioEndpoint",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "audioendpoint.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "Disk drive",
+            "classe": "DiskDrive",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4597",
+            "data": "6-21-2006",
+            "inf": "disk.inf"
+          },
+          {
+            "dispositivo": "AMD Radeon HD 5450",
+            "classe": "Display",
+            "fabricante": "Advanced Micro Devices, Inc.",
+            "versao": "15.201.2401.0",
+            "data": "11-4-2015",
+            "inf": "oem14.inf"
+          },
+          {
+            "dispositivo": "USB Input Device",
+            "classe": "HIDClass",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "input.inf"
+          },
+          {
+            "dispositivo": "USB Input Device",
+            "classe": "HIDClass",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "input.inf"
+          },
+          {
+            "dispositivo": "USB Input Device",
+            "classe": "HIDClass",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "input.inf"
+          },
+          {
+            "dispositivo": "USB Input Device",
+            "classe": "HIDClass",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "input.inf"
+          },
+          {
+            "dispositivo": "AMD High Definition Audio Device",
+            "classe": "MEDIA",
+            "fabricante": "Advanced Micro Devices",
+            "versao": "10.0.0.3",
+            "data": "4-13-2016",
+            "inf": "oem15.inf"
+          },
+          {
+            "dispositivo": "High Definition Audio Device",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "10-19-2023",
+            "inf": "hdaudio.inf"
+          },
+          {
+            "dispositivo": "Microsoft Streaming Clock Proxy",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ksfilter.inf"
+          },
+          {
+            "dispositivo": "Microsoft Streaming Quality Manager Proxy",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ksfilter.inf"
+          },
+          {
+            "dispositivo": "Microsoft Streaming Service Proxy",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ksfilter.inf"
+          },
+          {
+            "dispositivo": "Microsoft Streaming Tee/Sink-to-Sink Converter",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ksfilter.inf"
+          },
+          {
+            "dispositivo": "Microsoft Streaming Tee/Sink-to-Sink Converter",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ksfilter.inf"
+          },
+          {
+            "dispositivo": "Microsoft Trusted Audio Drivers",
+            "classe": "MEDIA",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.5072",
+            "data": "10-11-2024",
+            "inf": "wdmaudio.inf"
+          },
+          {
+            "dispositivo": "Hyper-V Virtual Ethernet Adapter",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "wvms_mp_windows.inf"
+          },
+          {
+            "dispositivo": "Hyper-V Virtual Switch Extension Adapter",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "wvms_mp_windows.inf"
+          },
+          {
+            "dispositivo": "Intel(R) Ethernet Connection I217-LM",
+            "classe": "Net",
+            "fabricante": "Intel",
+            "versao": "12.19.2.69",
+            "data": "6-29-2026",
+            "inf": "oem20.inf"
+          },
+          {
+            "dispositivo": "Microsoft Kernel Debug Network Adapter",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "kdnic.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (IKEv2)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netavpna.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (IP)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (IPv6)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (L2TP)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (Network Monitor)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (PPPOE)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (PPTP)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netrasa.inf"
+          },
+          {
+            "dispositivo": "WAN Miniport (SSTP)",
+            "classe": "Net",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "netsstpa.inf"
+          },
+          {
+            "dispositivo": "Intel(R) C220 series chipset SATA AHCI Controller",
+            "classe": "SCSIAdapter",
+            "fabricante": "Intel Corporation",
+            "versao": "6.2.0.1238",
+            "data": "9-18-2019",
+            "inf": "oem18.inf"
+          },
+          {
+            "dispositivo": "Microsoft Storage Spaces Controller",
+            "classe": "SCSIAdapter",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "spaceport.inf"
+          },
+          {
+            "dispositivo": "Microsoft VHD Loopback Controller",
+            "classe": "SCSIAdapter",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6328",
+            "data": "6-21-2006",
+            "inf": "vhdmp.inf"
+          },
+          {
+            "dispositivo": "ACPI Fan",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Fan",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Fan",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Fan",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Fan",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Fixed Feature Button",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Power Button",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Thermal Zone",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ACPI Thermal Zone",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Application interface driver",
+            "classe": "System",
+            "fabricante": "Lenovo",
+            "versao": "1.0.0.12",
+            "data": "11-13-2017",
+            "inf": "oem8.inf"
+          },
+          {
+            "dispositivo": "Composite Bus Enumerator",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "compositebus.inf"
+          },
+          {
+            "dispositivo": "Direct memory access controller",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "ELAN SMBus Driver",
+            "classe": "System",
+            "fabricante": "ELAN SMBus",
+            "versao": "24.21.53.3",
+            "data": "6-10-2026",
+            "inf": "oem19.inf"
+          },
+          {
+            "dispositivo": "High Definition Audio Controller",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6157",
+            "data": "7-7-2025",
+            "inf": "hdaudbus.inf"
+          },
+          {
+            "dispositivo": "High Definition Audio Controller",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6157",
+            "data": "7-7-2025",
+            "inf": "hdaudbus.inf"
+          },
+          {
+            "dispositivo": "High precision event timer",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Intel(R) 8 Series/C220 Series PCI Express Root Port #1 - 8C10",
+            "classe": "System",
+            "fabricante": "INTEL",
+            "versao": "10.1.1.45",
+            "data": "1-2-2018",
+            "inf": "oem10.inf"
+          },
+          {
+            "dispositivo": "Intel(R) 8 Series/C220 Series PCI Express Root Port #4 - 8C16",
+            "classe": "System",
+            "fabricante": "INTEL",
+            "versao": "10.1.1.45",
+            "data": "1-2-2018",
+            "inf": "oem10.inf"
+          },
+          {
+            "dispositivo": "Intel(R) Management Engine Interface ",
+            "classe": "System",
+            "fabricante": "Intel",
+            "versao": "11.7.0.1057",
+            "data": "4-3-2018",
+            "inf": "oem17.inf"
+          },
+          {
+            "dispositivo": "Intel(R) Q87 LPC Controller - 8C4E",
+            "classe": "System",
+            "fabricante": "INTEL",
+            "versao": "10.1.1.45",
+            "data": "1-2-2018",
+            "inf": "oem10.inf"
+          },
+          {
+            "dispositivo": "Intel(R) Xeon(R) processor E3 - 1200 v3/4th Gen Core processor DRAM Controller - 0C00",
+            "classe": "System",
+            "fabricante": "INTEL",
+            "versao": "10.1.1.45",
+            "data": "1-2-2018",
+            "inf": "oem9.inf"
+          },
+          {
+            "dispositivo": "Intel(R) Xeon(R) processor E3 - 1200 v3/4th Gen Core processor PCI Express x16 Controller - 0C01",
+            "classe": "System",
+            "fabricante": "INTEL",
+            "versao": "10.1.1.45",
+            "data": "1-2-2018",
+            "inf": "oem9.inf"
+          },
+          {
+            "dispositivo": "Legacy device",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Microsoft ACPI-Compliant System",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "acpi.inf"
+          },
+          {
+            "dispositivo": "Microsoft Basic Display Driver",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "basicdisplay.inf"
+          },
+          {
+            "dispositivo": "Microsoft Basic Render Driver",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6216",
+            "data": "6-21-2006",
+            "inf": "basicrender.inf"
+          },
+          {
+            "dispositivo": "Microsoft Hyper-V PCI Server",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "wvpcivsp.inf"
+          },
+          {
+            "dispositivo": "Microsoft Hyper-V Virtual Disk Server",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6093",
+            "data": "6-21-2006",
+            "inf": "wstorvsp.inf"
+          },
+          {
+            "dispositivo": "Microsoft Hyper-V Virtual Machine Bus Provider",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6093",
+            "data": "6-21-2006",
+            "inf": "wvmbusr.inf"
+          },
+          {
+            "dispositivo": "Microsoft Hyper-V Virtualization Infrastructure Driver",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.5794",
+            "data": "6-21-2006",
+            "inf": "wvid.inf"
+          },
+          {
+            "dispositivo": "Microsoft RemoteFX Synth3D VSP Driver",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "wsynth3dvsp.inf"
+          },
+          {
+            "dispositivo": "Microsoft System Management BIOS Driver",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "mssmbios.inf"
+          },
+          {
+            "dispositivo": "Microsoft UEFI-Compliant System",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "uefi.inf"
+          },
+          {
+            "dispositivo": "Microsoft Virtual Drive Enumerator",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "vdrvroot.inf"
+          },
+          {
+            "dispositivo": "Microsoft Windows Management Interface for ACPI",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "wmiacpi.inf"
+          },
+          {
+            "dispositivo": "Motherboard resources",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Motherboard resources",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Motherboard resources",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Motherboard resources",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Motherboard resources",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "NDIS Virtual Network Adapter Enumerator",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "ndisvirtualbus.inf"
+          },
+          {
+            "dispositivo": "Numeric data processor",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "PCI Express Root Complex",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "pci.inf"
+          },
+          {
+            "dispositivo": "PCI-to-PCI Bridge",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "pci.inf"
+          },
+          {
+            "dispositivo": "Plug and Play Software Device Enumerator",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "12-6-2019",
+            "inf": "swenum.inf"
+          },
+          {
+            "dispositivo": "Programmable interrupt controller",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "Remote Desktop Device Redirector Bus",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "rdpbus.inf"
+          },
+          {
+            "dispositivo": "System CMOS/real time clock",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "System timer",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "machine.inf"
+          },
+          {
+            "dispositivo": "UMBus Root Bus Enumerator",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.1",
+            "data": "6-21-2006",
+            "inf": "umbus.inf"
+          },
+          {
+            "dispositivo": "Volume Manager",
+            "classe": "System",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.3636",
+            "data": "6-21-2006",
+            "inf": "volmgr.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "10-10-2025",
+            "inf": "usbhub3.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "usb.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "10-10-2025",
+            "inf": "usbhub3.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "10-10-2025",
+            "inf": "usbhub3.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "10-10-2025",
+            "inf": "usbhub3.inf"
+          },
+          {
+            "dispositivo": "Generic USB Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "usb.inf"
+          },
+          {
+            "dispositivo": "Intel(R) 8 Series/C220 Series USB EHCI #1 - 8C26",
+            "classe": "USB",
+            "fabricante": "Intel",
+            "versao": "9.4.0.1025",
+            "data": "7-31-2013",
+            "inf": "oem13.inf"
+          },
+          {
+            "dispositivo": "Intel(R) 8 Series/C220 Series USB EHCI #2 - 8C2D",
+            "classe": "USB",
+            "fabricante": "Intel",
+            "versao": "9.4.0.1025",
+            "data": "7-31-2013",
+            "inf": "oem13.inf"
+          },
+          {
+            "dispositivo": "Unknown USB Device (Device Descriptor Request Failed)",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "usb.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Mass Storage Device",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.4355",
+            "data": "6-21-2006",
+            "inf": "usbstor.inf"
+          },
+          {
+            "dispositivo": "USB Root Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "usbport.inf"
+          },
+          {
+            "dispositivo": "USB Root Hub",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "6-21-2006",
+            "inf": "usbport.inf"
+          },
+          {
+            "dispositivo": "USB Root Hub (USB 3.0)",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.6456",
+            "data": "10-10-2025",
+            "inf": "usbhub3.inf"
+          },
+          {
+            "dispositivo": "USB xHCI Compliant Host Controller",
+            "classe": "USB",
+            "fabricante": "Microsoft",
+            "versao": "10.0.19041.5794",
+            "data": "4-7-2025",
+            "inf": "usbxhci.inf"
+          }
+        ],
+        "dispositivosComErro": [],
+        "backupsExistentes": [
+          {
+            "nomePasta": "drivers_DESKTOP-QP22547_20261120_154236",
+            "caminho": "F:\\WindowsBoostPro\\backups\\drivers_DESKTOP-QP22547_20261120_154236",
+            "totalInf": 45,
+            "totalBinarios": 165,
+            "tamanhoMB": 400.34,
+            "temScriptRestauracao": true,
+            "prontoParaFormatar": true,
+            "amostraInfs": [
+              "ACER_S271HL.inf",
+              "AtihdWT6.inf",
+              "basicrender.inf",
+              "bth.inf",
+              "bthpan.inf",
+              "C0296375.inf",
+              "e1d.inf",
+              "ETDSMBus.inf"
+            ],
+            "criadoEm": "2026-11-20T18:42:40.144Z",
+            "criadoFormatado": "20/11/2026, 15:42:40"
+          }
+        ]
+      },
+      "recomendacoes": [
+        {
+          "prioridade": "Importante",
+          "titulo": "Inicialização Rápida (Fast Startup) está ativa no Windows",
+          "motivo": "Quando o usuário clica apenas em Desligar, o Windows hiberna o kernel sem zerar falhas acumuladas.",
+          "acaoSugerida": "Desative a Inicialização Rápida com 1 clique abaixo.",
+          "acaoCodigo": "fix_desativar_hiberboot",
+          "botaoTexto": "Desativar Inicialização Rápida Agora"
+        },
+        {
+          "prioridade": "Recomendado",
+          "titulo": "Limpeza Preventiva de Caches e Temporários",
+          "motivo": "Mantém o SSD rápido e evita travamentos do Windows Explorer.",
+          "acaoSugerida": "Clique abaixo para limpar temporários e renovar DNS.",
+          "acaoCodigo": "fix_logs_sistema",
+          "botaoTexto": "Limpar Cache + Reparar Sistema Agora"
+        }
+      ],
+      "logsSistema": [
+        {
+          "dataHora": "20/11/2026 08:56",
+          "log": "System",
+          "id": 41,
+          "fonte": "Microsoft-Windows-Kernel-Power",
+          "categoria": "Energia / Desligamento",
+          "mensagem": "O sistema foi reiniciado sem um desligamento limpo primeiro.",
+          "solucao": "Verificar fonte/filtro de linha e desativar a Inicialização Rápida.",
+          "acaoCodigo": "fix_desativar_hiberboot",
+          "botaoTexto": "Corrigir Energia e Hiberboot"
+        },
+        {
+          "dataHora": "19/11/2026 05:42",
+          "log": "Application",
+          "id": 1002,
+          "fonte": "Application Hang",
+          "categoria": "Programa Congelou (Não Responde)",
+          "mensagem": "O programa explorer.exe parou de interagir com o Windows.",
+          "solucao": "Limpar cache de ícones e reiniciar o Windows Explorer.",
+          "acaoCodigo": "fix_travamento_explorer",
+          "botaoTexto": "Destravar Explorer e Limpar Cache"
+        }
+      ]
+    }
+  },
+  "tecnico": {
+    "ok": true,
+    "perfil": {
+      "nome": "Jonas Mendonça",
+      "telefone": "(11) 96670-7293",
+      "email": "jonas.skynet@gmail.com",
+      "empresa": "Jonas Mendonça — Assistência Técnica Especializada & Suporte Remoto",
+      "valorPadrao": "R$ 150,00",
+      "garantiaDias": 90,
+      "atualizadoEm": "2026-11-20T17:43:45.058Z"
+    },
+    "statusRemoto": {
+      "quickAssistNativo": true,
+      "assistenciaRemotaMsra": true,
+      "conexaoRdpMstsc": true,
+      "rdpServidorAtivo": false,
+      "anydeskInstalado": true,
+      "rustdeskInstalado": true,
+      "ipsLocais": [
+        "192.168.100.210"
+      ]
+    },
+    "top10Github": [
+      {
+        "rank": 1,
+        "repo": "microsoft/PowerToys",
+        "estrelas": "110.000+ ⭐",
+        "foco": "Utilitários Avançados de Sistema",
+        "integradoComo": "Disponível em 1 clique no Kit Ninite Técnico (Microsoft.PowerToys)",
+        "acaoTipo": "ninite",
+        "acaoAlvo": "Microsoft.PowerToys",
+        "botaoTexto": "Instalar PowerToys (Winget)"
+      },
+      {
+        "rank": 2,
+        "repo": "rustdesk/rustdesk",
+        "estrelas": "83.000+ ⭐",
+        "foco": "Acesso Remoto Open-Source Sem Limite",
+        "integradoComo": "Integrado na Central de Acesso Remoto + Kit Ninite (RustDesk.RustDesk)",
+        "acaoTipo": "remoto",
+        "acaoAlvo": "abrir_ou_instalar_rustdesk",
+        "botaoTexto": "Abrir / Instalar RustDesk"
+      },
+      {
+        "rank": 3,
+        "repo": "Ventoy/Ventoy",
+        "estrelas": "63.000+ ⭐",
+        "foco": "PenDrive Multi-ISO (Win 10 + Win 11 + Linux)",
+        "integradoComo": "Integrado no Kit Ninite de Bancada (Ventoy.Ventoy)",
+        "acaoTipo": "ninite",
+        "acaoAlvo": "Ventoy.Ventoy",
+        "botaoTexto": "Instalar Ventoy no PC"
+      },
+      {
+        "rank": 4,
+        "repo": "ChrisTitusTech/winutil",
+        "estrelas": "45.000+ ⭐",
+        "foco": "Plano Desempenho Máximo, Explorer Técnico e Update Estável",
+        "integradoComo": "Integrado nas Otimizações Reversíveis (github_winutil_explorer_tecnico)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_winutil_explorer_tecnico",
+        "botaoTexto": "Ativar Explorer Técnico Agora"
+      },
+      {
+        "rank": 5,
+        "repo": "pbatard/rufus",
+        "estrelas": "31.000+ ⭐",
+        "foco": "PenDrive Bootável Rápido + Bypass TPM 2.0 Windows 11",
+        "integradoComo": "Download Portátil + Chave Bypass Windows 11 (github_rufus_bypass_win11)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_rufus_bypass_win11",
+        "botaoTexto": "Liberar Win 11 Sem TPM 2.0"
+      },
+      {
+        "rank": 6,
+        "repo": "Raphire/Win11Debloat",
+        "estrelas": "18.000+ ⭐",
+        "foco": "Remoção de Copilot, Recall, Bing no Iniciar e Menu Clássico",
+        "integradoComo": "Integrado no Modo Windows 10 & 11 Bem Liso (github_debloat_copilot_bing_widgets)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_debloat_copilot_bing_widgets",
+        "botaoTexto": "Limpar Bing/Copilot/Widgets"
+      },
+      {
+        "rank": 7,
+        "repo": "hellzerg/optimizer",
+        "estrelas": "17.000+ ⭐",
+        "foco": "Auditoria de Arquivo HOSTS, Rede e Privacidade",
+        "integradoComo": "Download Portátil + Auditoria HOSTS (github_optimizer_hosts_rede)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_optimizer_hosts_rede",
+        "botaoTexto": "Auditar HOSTS e Limpar DNS"
+      },
+      {
+        "rank": 8,
+        "repo": "WinsiderSS/systeminformer",
+        "estrelas": "14.000+ ⭐",
+        "foco": "Inspeção Profunda de Processos, Serviços e Memória (Process Hacker)",
+        "integradoComo": "Caçador de Processos ao Vivo + Instalação via Winget",
+        "acaoTipo": "ninite",
+        "acaoAlvo": "WinsiderSS.SystemInformer",
+        "botaoTexto": "Instalar System Informer"
+      },
+      {
+        "rank": 9,
+        "repo": "builtbybel/CrapFixer",
+        "estrelas": "10.000+ ⭐",
+        "foco": "Bloqueio de Tarefas Agendadas de Telemetria (CEIP / Appraiser)",
+        "integradoComo": "Integrado em Otimizar Windows (github_crapfixer_telemetria_tarefas)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_crapfixer_telemetria_tarefas",
+        "botaoTexto": "Desativar Tarefas de Telemetria"
+      },
+      {
+        "rank": 10,
+        "repo": "LibreHardwareMonitor/LibreHardwareMonitor",
+        "estrelas": "7.500+ ⭐",
+        "foco": "Leitura de Sensores Térmicos (°C), Ventoinhas e Saúde S.M.A.R.T.",
+        "integradoComo": "Leitor Nativo de Temperatura/S.M.A.R.T. + Laudo de Bateria (github_relatorio_bateria_energia)",
+        "acaoTipo": "catalogo",
+        "acaoAlvo": "github_relatorio_bateria_energia",
+        "botaoTexto": "Gerar Laudo de Bateria"
+      }
+    ]
+  }
+}

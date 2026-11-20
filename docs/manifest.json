@@ -1,0 +1,20 @@
+{
+  "name": "Windows Boost Pro — Jonas Mendonça",
+  "short_name": "Boost Pro",
+  "description": "Assistência técnica, bancada de hardware em 6 etapas, otimização Windows/Mac/Mobile, drivers e laudo em PDF.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c1015",
+  "theme_color": "#0c1015",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
